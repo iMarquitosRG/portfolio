@@ -2,6 +2,8 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio",
   "compatibility_date": "2026-10-01",
+  // Public URL: portfolio.marcosdanielrg.workers.dev (until the custom domain is added)
+  "workers_dev": true,
   // Static site: serve the Astro build, with the custom 404 page for unknown URLs.
   "assets": {
     "directory": "./dist",

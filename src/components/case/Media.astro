@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { label: string; src?: string; alt?: string; height?: 'sm' | 'md' | 'lg'; tint?: boolean }
+const { label, src, alt = '', height = 'md', tint = true } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('../../assets/cases/*.{png,jpg,jpeg,webp,avif}');
+const key = src ? `../../assets/cases/${src}` : null;
+const img = key && images[key] ? (await images[key]()).default : null;
+---
+<figure class:list={['media', `media--${height}`, tint && 'media--tint']} data-reveal>
+  {img ? (
+    <Image src={img} alt={alt} widths={[480, 800, 1200, 1600]} sizes="(min-width: 1200px) 1000px, 100vw" />
+  ) : (
+    <figcaption class="media__label t-label">Placeholder · {label}</figcaption>
+  )}
+</figure>

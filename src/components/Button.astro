@@ -1,0 +1,35 @@
+---
+import Icon, { type IconName } from './Icon.astro';
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'primary' | 'secondary' | 'link' | 'icon' | 'small';
+interface Props extends Omit<HTMLAttributes<'a'>, 'class'> {
+  variant?: Variant;
+  href?: string;
+  icon?: IconName;
+  iconSize?: number;
+  iconFirst?: boolean;
+  external?: boolean;
+  magnetic?: boolean;
+  class?: string;
+  type?: 'button' | 'submit';
+}
+const {
+  variant = 'primary', href, icon, iconSize, iconFirst = false, external = false,
+  magnetic = false, class: cls, type = 'button', ...rest
+} = Astro.props;
+const glass = variant === 'secondary' || variant === 'icon' || variant === 'small';
+const classes = ['btn', `btn--${variant}`, glass && 'glass', cls].filter(Boolean).join(' ');
+const size = iconSize ?? (variant === 'icon' ? 20 : variant === 'small' ? 14 : 16);
+const Tag = href ? 'a' : 'button';
+const extra = href
+  ? { href, ...(external ? { target: '_blank', rel: 'noopener' } : {}) }
+  : { type };
+---
+<Tag class={classes} {...extra} {...rest} data-magnetic={magnetic ? '' : undefined}>
+  {icon && iconFirst && <Icon name={icon} size={size} />}
+  {variant !== 'icon' && <span><slot /></span>}
+  {variant === 'icon' && <slot />}
+  {icon && !iconFirst && <Icon name={icon} size={size} />}
+  {external && <span class="sr-only">(opens in a new tab)</span>}
+</Tag>

@@ -1,0 +1,132 @@
+# Viaxo · case study content.
+# Anything in [brackets] is still pending: replace it with the real content.
+order: 3
+title: Viaxo
+bigWord: VIAXO
+tint: sand
+tag: 0 → 1 · Travel
+description: A complete management app for a travel agency, from client records to payments.
+card:
+  description: A complete management app for a travel agency that cut payment and client admin time by about 40%.
+  context: Freelance client
+  highlight: ~40% less admin time
+tldr:
+  role: Product Designer
+  timeline: "[Year]"
+  platforms: "[Platforms]"
+  outcome: ~40% less admin time
+next: zealix-operations
+nextSummary: Restaurant POS for frontline staff.
+seoDescription: How I designed a travel agency management app from scratch that cut payment and client admin time by about 40%.
+
+sections:
+  - id: overview
+    nav: Overview
+    label: 01 · Overview
+    title: One app to run a travel agency.
+    lead: "[Context in 3 to 4 lines: the agency, who uses the app day to day, and what your role was.]"
+    blocks:
+      - type: facts
+        items:
+          - { value: "0 → 1", label: Designed from scratch }
+          - { value: "~40%", label: Less time on payments and client admin }
+          - { value: "1", label: App for the whole agency workflow }
+      - { type: media, label: App overview, height: md }
+
+  - id: problem
+    nav: Problem
+    label: 02 · Problem
+    title: "[Payments and client records lived in too many places.]"
+    blocks:
+      - type: statement
+        label: Problem statement
+        text: "[One clear sentence: who struggled, in which moment, and why existing tools failed them.]"
+      - type: paragraphs
+        items:
+          - "[Supporting context: what the agency used before (spreadsheets, chats, paper) and where it broke down.]"
+
+  - id: research
+    nav: Research
+    label: 03 · Research
+    title: What the agency team needed.
+    lead: "[Methods in one line, e.g. interviews, on-site observation, usability tests. Then the 3 insights that shaped the product.]"
+    blocks:
+      - type: cards
+        items:
+          - { eyebrow: Insight 01, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
+          - { eyebrow: Insight 02, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
+          - { eyebrow: Insight 03, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
+
+  - id: decisions
+    nav: Key decisions
+    label: 04 · Key decisions
+    title: Three decisions that defined the product.
+    lead: "Each one: the problem, the options considered, and why this direction won."
+    blocks:
+      - type: decisions
+        items:
+          - eyebrow: Decision 01
+            title: "[Decision title]"
+            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
+            before: { label: Before, tint: false }
+            after: { label: After }
+          - eyebrow: Decision 02
+            title: "[Decision title]"
+            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
+            before: { label: Before, tint: false }
+            after: { label: After }
+          - eyebrow: Decision 03
+            title: "[Decision title]"
+            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
+            before: { label: Before, tint: false }
+            after: { label: After }
+
+  - id: core-flows
+    nav: Core flows
+    label: 05 · Core flows
+    title: Designing the core flows.
+    lead: "[The main flows: client records, bookings and payments, and how they connect.]"
+    blocks:
+      - type: cards
+        items:
+          - { eyebrow: Flow 01, title: "[Client records]", text: "[What it solves in one line.]" }
+          - { eyebrow: Flow 02, title: "[Bookings]", text: "[What it solves in one line.]" }
+          - { eyebrow: Flow 03, title: "[Payments]", text: "[What it solves in one line.]" }
+      - { type: media, label: Core flows, height: md }
+      - { type: link, label: View all work, href: "/#work" }
+
+  - id: testing
+    nav: Validation
+    label: 06 · Validation
+    title: Checked with the agency team.
+    lead: "[Who you tested with and how: number of people, roles, branches. What failed in round 1, what changed, how round 2 went.]"
+    blocks:
+      - type: rounds
+        items:
+          - { label: Round 1, text: "[What users struggled with]" }
+          - { label: What changed, text: "[The design changes you made]" }
+          - { label: Round 2, text: "[How they performed after]" }
+      - type: quotes
+        items:
+          - { quote: "“[Real quote from the agency team.]”", role: Agency team }
+          - { quote: "“[Real quote from the owner.]”", role: Owner }
+          - { quote: "[Observed moment, e.g. completed an order without asking for help.]", role: Observation }
+
+  - id: outcome
+    nav: Outcome
+    label: 07 · Outcome
+    title: What shipped and what changed.
+    lead: "Payment and client admin time dropped by about 40%. [Add how it was measured and what the team said.]"
+    blocks:
+      - { type: media, label: "Final screens · web, tablet, mobile", height: lg }
+
+  - id: learnings
+    nav: Learnings
+    label: 08 · Learnings
+    title: What I would do differently.
+    blocks:
+      - type: list
+        items:
+          - "[One honest takeaway in a sentence or two.]"
+          - "[One honest takeaway in a sentence or two.]"
+          - "[One honest takeaway in a sentence or two.]"

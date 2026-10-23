@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import avatar from '../assets/img/marcos-avatar.jpg';
+import { site } from '../data/site';
+interface Props { active?: string; back?: boolean }
+const { active = 'work', back = false } = Astro.props;
+---
+<header class="topbar" data-topbar>
+  {back ? (
+    <a class="btn btn--icon glass topbar__lead" href="/#work" aria-label="Back to all work" data-tooltip="All work">
+      <Icon name="chevron-left" size={20} />
+    </a>
+  ) : (
+    <a class="topbar__id topbar__lead" href="/" aria-label={`${site.name}, home`}>
+      <Image src={avatar} alt="" width={72} height={72} class="avatar" loading="eager" />
+      <span class="topbar__name">{site.name}</span>
+    </a>
+  )}
+
+  <nav class="topnav glass" aria-label="Main">
+    <ul>
+      {site.nav.map((item) => (
+        <li>
+          <a
+            class="navitem"
+            href={item.href}
+            aria-current={item.key === active ? 'page' : undefined}
+            {...('external' in item && item.external ? { target: '_blank', rel: 'noopener' } : {})}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <button
+    class="btn btn--icon glass topbar__a11y"
+    id="a11y-trigger"
+    type="button"
+    popovertarget="a11y-panel"
+    aria-label={site.a11y.trigger}
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    data-tooltip={site.a11y.title}
+  >
+    <Icon name="accessibility" size={20} />
+  </button>
+</header>

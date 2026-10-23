@@ -1,0 +1,132 @@
+# Zealix Operations Layer · case study content.
+# Anything in [brackets] is still pending: replace it with the real content.
+order: 1
+title: Zealix Operations Layer
+bigWord: ZEALIX
+tint: purple
+tag: Part of Zealix · 1 of 2
+description: Restaurant POS for frontline staff, designed from 0 to 1 across web, mobile and tablet.
+card:
+  description: Restaurant POS for frontline staff, designed from 0 to 1 and validated in usability tests with real staff.
+  context: Zealix, 2023 to 2025
+  highlight: Tested with real staff
+tldr:
+  role: Product Designer, UX Research
+  timeline: 2023 to 2025
+  platforms: Web · Mobile · Tablet
+  outcome: Validated with real staff
+next: zealix-admin
+nextSummary: Finance and multibranch management for restaurant owners.
+seoDescription: How I designed a restaurant POS for frontline staff from 0 to 1, across web, mobile and tablet, and validated it with real staff.
+
+sections:
+  - id: overview
+    nav: Overview
+    label: 01 · Overview
+    title: One platform, two layers, built from zero.
+    lead: "[Context in 3 to 4 lines: what Zealix is, who uses the Operations layer day to day, and what your role was across research, design and QA.]"
+    blocks:
+      - type: facts
+        items:
+          - { value: "2", label: Products in the Zealix platform }
+          - { value: "3", label: "Platforms: web, mobile, tablet" }
+          - { value: "0 → 1", label: From first research to QA }
+      - { type: media, label: "Ecosystem diagram · Operations + Admin", height: md }
+
+  - id: problem
+    nav: Problem
+    label: 02 · Problem
+    title: Restaurant staff work under pressure.
+    blocks:
+      - type: statement
+        label: Problem statement
+        text: "[One clear sentence: who struggled, in which moment, and why existing tools failed them.]"
+      - type: paragraphs
+        items:
+          - "[Supporting context: 2 to 3 lines on the situation before Zealix, the tools staff used and where they broke down.]"
+
+  - id: research
+    nav: Research
+    label: 03 · Research
+    title: What we learned from the floor.
+    lead: "[Methods in one line, e.g. interviews, on-site observation, usability tests. Then the 3 insights that shaped the product.]"
+    blocks:
+      - type: cards
+        items:
+          - { eyebrow: Insight 01, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
+          - { eyebrow: Insight 02, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
+          - { eyebrow: Insight 03, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
+
+  - id: decisions
+    nav: Key decisions
+    label: 04 · Key decisions
+    title: Three decisions that defined the product.
+    lead: "Each one: the problem, the options considered, and why this direction won."
+    blocks:
+      - type: decisions
+        items:
+          - eyebrow: Decision 01
+            title: "[Decision title]"
+            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
+            before: { label: Before, tint: false }
+            after: { label: After }
+          - eyebrow: Decision 02
+            title: "[Decision title]"
+            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
+            before: { label: Before, tint: false }
+            after: { label: After }
+          - eyebrow: Decision 03
+            title: "[Decision title]"
+            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
+            before: { label: Before, tint: false }
+            after: { label: After }
+
+  - id: design-system
+    nav: Design system
+    label: 05 · Design system
+    title: A shared language for both layers.
+    lead: One Figma design system for Operations and Admin, with themes for each product in light and dark.
+    blocks:
+      - type: facts
+        items:
+          - { value: "4", label: "Theme modes: POS and Capa Cero, light and dark" }
+          - { value: "2", label: Products running on one system }
+          - { value: "3", label: Platforms from the same components }
+      - { type: media, label: "Tokens, modes and components", height: md }
+      - { type: link, label: See how it scales in the Admin Layer, href: /work/zealix-admin }
+
+  - id: testing
+    nav: Usability testing
+    label: 06 · Usability testing
+    title: Tested with real staff, not assumptions.
+    lead: "[Who you tested with and how: number of people, roles, branches. What failed in round 1, what changed, how round 2 went.]"
+    blocks:
+      - type: rounds
+        items:
+          - { label: Round 1, text: "[What users struggled with]" }
+          - { label: What changed, text: "[The design changes you made]" }
+          - { label: Round 2, text: "[How they performed after]" }
+      - type: quotes
+        items:
+          - { quote: "“[Real quote from a cashier after round 2.]”", role: Cashier · Round 2 }
+          - { quote: "“[Real quote from a manager.]”", role: Manager · Round 2 }
+          - { quote: "[Observed moment, e.g. completed an order without asking for help.]", role: Observation }
+
+  - id: outcome
+    nav: Outcome
+    label: 07 · Outcome
+    title: What shipped and what changed.
+    lead: "[Final screens and the qualitative results: what got easier for staff, what the team adopted, what shipped.]"
+    blocks:
+      - { type: media, label: "Final screens · web, tablet, mobile", height: lg }
+
+  - id: learnings
+    nav: Learnings
+    label: 08 · Learnings
+    title: What I would do differently.
+    blocks:
+      - type: list
+        items:
+          - "[One honest takeaway in a sentence or two.]"
+          - "[One honest takeaway in a sentence or two.]"
+          - "[One honest takeaway in a sentence or two.]"

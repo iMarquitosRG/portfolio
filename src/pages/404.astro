@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import { site } from '../data/site';
+const n = site.notFound;
+---
+<Base title="Page not found" active="none">
+  <section class="frame grad tint-brand notfound" data-hero aria-labelledby="nf-title">
+    <div class="notfound__word" aria-hidden="true"><span class="bigword bw-strong" data-bigword>{n.word}</span></div>
+    <h1 id="nf-title" class="t-h1" data-split>{n.headline}</h1>
+    <p class="t-body-lg c-secondary" data-reveal>{n.sub}</p>
+    <div data-reveal><Button variant="primary" href="/" icon="arrow-right">{n.cta}</Button></div>
+  </section>
+</Base>

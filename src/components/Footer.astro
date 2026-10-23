@@ -1,0 +1,9 @@
+---
+import Button from './Button.astro';
+import { site } from '../data/site';
+---
+<footer class="footer">
+  <p class="t-label c-tertiary">{site.footer.copy}</p>
+  <Button variant="link" href="/about#built" icon="arrow-right" class="c-secondary">{site.footer.built}</Button>
+  <Button variant="small" href="#top" icon="arrow-up">{site.footer.top}</Button>
+</footer>

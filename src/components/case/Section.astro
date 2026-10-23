@@ -1,0 +1,107 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Media from './Media.astro';
+import Button from '../Button.astro';
+type Section = CollectionEntry<'cases'>['data']['sections'][number];
+interface Props { section: Section }
+const { section: s } = Astro.props;
+---
+<section class="cs-section" id={s.id} aria-labelledby={`${s.id}-title`} data-index-target>
+  <p class="t-label c-tertiary" data-reveal>{s.label}</p>
+  <h2 class="t-h2" id={`${s.id}-title`} data-split>{s.title}</h2>
+  {s.lead && <p class="t-body-lg c-secondary cs-lead" data-reveal>{s.lead}</p>}
+
+  {s.blocks.map((b) => {
+    switch (b.type) {
+      case 'facts':
+        return (
+          <ul class="grid-3">
+            {b.items.map((f) => (
+              <li class="surface card" data-reveal>
+                <span class="t-h2">{f.value}</span>
+                <span class="t-small c-secondary">{f.label}</span>
+              </li>
+            ))}
+          </ul>
+        );
+      case 'statement':
+        return (
+          <div class="surface statement" data-reveal>
+            <p class="t-label c-tertiary">{b.label}</p>
+            <p class="t-h3">{b.text}</p>
+          </div>
+        );
+      case 'paragraphs':
+        return b.items.map((p) => <p class="t-body-lg c-secondary cs-lead" data-reveal>{p}</p>);
+      case 'cards':
+        return (
+          <ul class="grid-3">
+            {b.items.map((c) => (
+              <li class="surface card card--tall" data-reveal>
+                <span class="t-label c-tertiary">{c.eyebrow}</span>
+                <span class="card__body">
+                  <span class="t-h3">{c.title}</span>
+                  <span class="t-small c-secondary">{c.text}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        );
+      case 'decisions':
+        return (
+          <ol class="decisions">
+            {b.items.map((d) => (
+              <li class="decision">
+                <div class="decision__text" data-reveal>
+                  <p class="t-label c-tertiary">{d.eyebrow}</p>
+                  <h3 class="t-h3">{d.title}</h3>
+                  <p class="c-secondary">{d.text}</p>
+                </div>
+                <div class="decision__media">
+                  <Media {...d.before} />
+                  <Media {...d.after} />
+                </div>
+              </li>
+            ))}
+          </ol>
+        );
+      case 'rounds':
+        return (
+          <ol class="grid-3 rounds">
+            {b.items.map((r, i) => (
+              <li class:list={['surface', 'card', i === 1 && 'card--elevated']} data-reveal>
+                <span class="t-label c-tertiary">{r.label}</span>
+                <span class="t-medium">{r.text}</span>
+              </li>
+            ))}
+          </ol>
+        );
+      case 'quotes':
+        return (
+          <ul class="grid-3">
+            {b.items.map((q) => (
+              <li class="surface card card--quote" data-reveal>
+                <blockquote class="t-body-lg t-medium">{q.quote}</blockquote>
+                <span class="t-label c-tertiary">{q.role}</span>
+              </li>
+            ))}
+          </ul>
+        );
+      case 'media':
+        return <Media {...b} />;
+      case 'list':
+        return (
+          <ol class="learnings">
+            {b.items.map((l, i) => (
+              <li data-reveal>
+                <span class="t-label c-tertiary">{String(i + 1).padStart(2, '0')}</span>
+                <p class="t-body-lg">{l}</p>
+              </li>
+            ))}
+          </ol>
+        );
+      case 'link':
+        return <div data-reveal><Button variant="link" href={b.href} icon="arrow-right">{b.label}</Button></div>;
+    }
+  })}
+</section>

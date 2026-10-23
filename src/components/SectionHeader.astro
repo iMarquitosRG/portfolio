@@ -1,0 +1,11 @@
+---
+interface Props { label: string; title: string; lead?: string; id?: string; as?: 'h2' | 'h3'; class?: string }
+const { label, title, lead, id, as: H = 'h2', class: cls } = Astro.props;
+---
+<header class:list={['section-header', cls]}>
+  <div class="section-header__main">
+    <p class="t-label c-tertiary" data-reveal>{label}</p>
+    <H class="t-h2" id={id} data-split>{title}</H>
+  </div>
+  {lead && <p class="section-header__lead t-body c-secondary" data-reveal>{lead}</p>}
+</header>

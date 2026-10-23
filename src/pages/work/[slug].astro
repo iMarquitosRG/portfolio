@@ -1,0 +1,69 @@
+---
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Chip from '../../components/Chip.astro';
+import Icon from '../../components/Icon.astro';
+import Mockups from '../../components/Mockups.astro';
+import Section from '../../components/case/Section.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('cases');
+  return cases.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+interface Props { entry: CollectionEntry<'cases'> }
+const { entry } = Astro.props;
+const d = entry.data;
+const next = await getEntry(d.next);
+const tldr = [
+  ['Role', d.tldr.role],
+  ['Timeline', d.tldr.timeline],
+  ['Platforms', d.tldr.platforms],
+  ['Outcome', d.tldr.outcome],
+];
+---
+<Base title={d.title} description={d.seoDescription} active="work" back>
+  <section class={`frame grad tint-${d.tint} cover`} aria-labelledby="case-title" style={`view-transition-name: cover-${entry.id}`} data-hero>
+    <div class="cover__word" aria-hidden="true" data-parallax="-6"><span class="bigword" data-bigword>{d.bigWord}</span></div>
+    <Mockups class="cover__mockups" parallax={-10} />
+    <div class="cover__copy">
+      <div data-reveal><Chip>{d.tag}</Chip></div>
+      <h1 id="case-title" class="t-display" data-split>{d.title}</h1>
+      <p class="t-body-lg c-secondary" data-reveal>{d.description}</p>
+    </div>
+    <dl class="tldr glass" data-reveal>
+      {tldr.map(([k, v]) => <div><dt class="t-label c-tertiary">{k}</dt><dd>{v}</dd></div>)}
+    </dl>
+  </section>
+
+  <div class="content">
+    <div class="cs-body">
+      <nav class="cs-index" aria-label="On this page">
+        <p class="t-label c-tertiary">On this page</p>
+        {d.sections.map((s) => <a href={`#${s.id}`} data-index-link>{s.nav}</a>)}
+      </nav>
+      <nav class="cs-chips glass" aria-label="On this page" data-index-chips>
+        {d.sections.map((s) => <a href={`#${s.id}`} data-index-link>{s.nav}</a>)}
+      </nav>
+      <div class="cs-sections">
+        {d.sections.map((s) => <Section section={s} />)}
+      </div>
+    </div>
+
+    {next && (
+      <section class={`next-case grad tint-${next.data.tint}`} aria-labelledby="next-title">
+        <div class="next-case__word" aria-hidden="true" data-parallax="-8"><span class="bigword" data-bigword>{next.data.bigWord}</span></div>
+        <p class="t-label c-secondary">{next.data.order === 2 ? 'See the other layer' : 'Next case'}</p>
+        <div class="next-case__title">
+          <h2 id="next-title" class="t-h1"><a href={`/work/${next.id}`}>{next.data.title}</a></h2>
+          <span class="btn btn--icon glass" aria-hidden="true"><Icon name="arrow-right" size={20} /></span>
+        </div>
+        <p class="t-body-lg c-secondary">{d.nextSummary}</p>
+      </section>
+    )}
+
+    <Contact variant="compact" />
+    <Footer />
+  </div>
+</Base>

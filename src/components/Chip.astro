@@ -1,0 +1,8 @@
+---
+interface Props { variant?: 'glass' | 'outline'; dot?: boolean; class?: string; [key: string]: unknown }
+const { variant = 'glass', dot = false, class: cls, ...rest } = Astro.props;
+---
+<span class:list={['chip', `chip--${variant}`, variant === 'glass' && 'glass', cls]} {...rest}>
+  {dot && <span class="chip__dot" aria-hidden="true"></span>}
+  <slot />
+</span>

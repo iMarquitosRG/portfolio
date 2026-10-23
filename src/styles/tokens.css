@@ -1,0 +1,244 @@
+/*
+  Design tokens, generated from the Figma "Portfolio Website" variables.
+  Collections → attributes on <html>:
+    Theme       → data-theme="dark | light"   (+ data-contrast="more" = High Contrast)
+    Material    → data-material="glass | solid"
+    Responsive  → media queries below
+    Text size   → data-text-size="base | lg | xl"  (100 / 115 / 130 %)
+  Everything type-related is in rem, so the text-size setting scales it.
+*/
+
+:root {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Responsive · Mobile (default) */
+  --fs-display: 2.75rem;
+  --fs-h1: 2.25rem;
+  --fs-h2: 1.75rem;
+  --fs-h3: 1.375rem;
+  --fs-body-lg: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-label: 0.75rem;
+
+  --r-sm: 12px;
+  --r-card: 16px;
+  --r-hero: 20px;
+  --r-pill: 999px;
+
+  --inset: 8px;
+  --gutter: 16px;
+  --section: 80px;
+  --max: 1280px;
+  --topbar-h: 46px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 150ms;
+  --dur: 300ms;
+
+  /* Material · Glass */
+  --blur: 24px;
+}
+
+/* Responsive · Tablet */
+@media (min-width: 744px) {
+  :root {
+    --fs-display: 4rem;
+    --fs-h1: 2.75rem;
+    --fs-h2: 2rem;
+    --fs-h3: 1.5rem;
+    --r-card: 20px;
+    --r-hero: 28px;
+    --inset: 12px;
+    --gutter: 24px;
+    --section: 120px;
+  }
+}
+
+/* Responsive · Desktop */
+@media (min-width: 1200px) {
+  :root {
+    --fs-display: 5rem;
+    --fs-h1: 3.5rem;
+    --fs-h2: 2.5rem;
+    --fs-h3: 1.75rem;
+    --fs-body-lg: 1.25rem;
+    --r-hero: 32px;
+    --inset: 24px;
+    --gutter: 32px;
+    --section: 160px;
+  }
+}
+
+/* ---------- Theme · Dark (default) ---------- */
+:root {
+  color-scheme: dark;
+  --bg-base: #0a0a0b;
+  --bg-surface: #141416;
+  --bg-elevated: #1c1c1f;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  /* Bumped from neutral/500 to neutral/400 so small mono labels pass WCAG AA (6:1). */
+  --text-tertiary: #8e8e93;
+  --text-inverse: #0a0a0b;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --action-bg: #ffffff;
+  --action-text: #0a0a0b;
+  --focus: #ffffff;
+  --fill-active: rgba(255, 255, 255, 0.12);
+
+  --glass-fill: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.35);
+  --panel-fill: rgba(28, 28, 31, 0.86);
+
+  /* Gradients (Figma can't bind these; here they're per-theme tokens) */
+  --brand-1: #9e8f80;
+  --brand-2: #333033;
+  --purple-1: #786699;
+  --purple-2: #2b2636;
+  --slate-1: #6b7380;
+  --slate-2: #26292e;
+  --sand-1: #948c75;
+  --sand-2: #2b2b29;
+  --vignette: radial-gradient(120% 120% at 30% 25%, transparent 45%, rgba(0, 0, 0, 0.45) 100%);
+
+  /* Big background words */
+  --bw-strong-a: rgba(255, 255, 255, 0.62);
+  --bw-strong-b: rgba(255, 255, 255, 0.34);
+  --bw-soft-a: rgba(255, 255, 255, 0.3);
+  --bw-soft-b: rgba(255, 255, 255, 0);
+  --bw-a: rgba(255, 255, 255, 0.5);
+  --bw-b: rgba(255, 255, 255, 0.02);
+
+  /* Device mockup placeholders */
+  --mock-bg: #151517;
+  --mock-border: rgba(255, 255, 255, 0.14);
+  --mock-shadow: 0 30px 80px -12px rgba(0, 0, 0, 0.55);
+
+  --portrait-darken: 0.28;
+  --portrait-fade: 0.85;
+}
+
+/* ---------- Theme · Light ---------- */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg-base: #fafafa;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --text-primary: #0a0a0b;
+  --text-secondary: #55555b;
+  --text-tertiary: #6e6e73;
+  --text-inverse: #f5f5f7;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.2);
+  --action-bg: #0a0a0b;
+  --action-text: #ffffff;
+  --focus: #0a0a0b;
+  --fill-active: rgba(0, 0, 0, 0.08);
+
+  --glass-fill: rgba(255, 255, 255, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-highlight: rgba(255, 255, 255, 0.8);
+  --glass-shadow: 0 6px 20px -4px rgba(77, 56, 36, 0.1);
+  --panel-fill: rgba(255, 255, 255, 0.86);
+
+  --brand-1: #decfbd;
+  --brand-2: #f3eee8;
+  --purple-1: #ded4f5;
+  --purple-2: #f4f0fc;
+  --slate-1: #d1dbeb;
+  --slate-2: #eff2f8;
+  --sand-1: #e6dec7;
+  --sand-2: #f5f2e9;
+  --vignette: linear-gradient(transparent, transparent);
+
+  --bw-strong-a: rgba(26, 20, 15, 0.3);
+  --bw-strong-b: rgba(26, 20, 15, 0.16);
+  --bw-soft-a: rgba(26, 20, 15, 0.14);
+  --bw-soft-b: rgba(26, 20, 15, 0);
+  --bw-a: rgba(26, 20, 15, 0.28);
+  --bw-b: rgba(26, 20, 15, 0);
+
+  --mock-bg: #ffffff;
+  --mock-border: rgba(0, 0, 0, 0.1);
+  --mock-shadow: 0 24px 60px -16px rgba(77, 56, 36, 0.18);
+
+  --portrait-darken: 0.06;
+  --portrait-fade: 0.5;
+}
+
+/* ---------- Theme · High Contrast (dark) ---------- */
+:root[data-contrast='more'] {
+  --bg-base: #000000;
+  --bg-surface: #0a0a0b;
+  --bg-elevated: #141416;
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5ea;
+  --text-tertiary: #c7c7cc;
+  --border-subtle: rgba(255, 255, 255, 0.4);
+  --border-strong: #ffffff;
+  --fill-active: rgba(255, 255, 255, 0.2);
+  --glass-fill: #141416;
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-highlight: transparent;
+  --glass-shadow: none;
+  --panel-fill: #141416;
+  --blur: 0px;
+  --brand-1: #000; --brand-2: #000;
+  --purple-1: #000; --purple-2: #000;
+  --slate-1: #000; --slate-2: #000;
+  --sand-1: #000; --sand-2: #000;
+  --vignette: linear-gradient(transparent, transparent);
+  --bw-strong-a: rgba(255, 255, 255, 0.2);
+  --bw-strong-b: rgba(255, 255, 255, 0.14);
+  --bw-soft-a: rgba(255, 255, 255, 0.1);
+  --bw-soft-b: rgba(255, 255, 255, 0);
+  --bw-a: rgba(255, 255, 255, 0.2);
+  --bw-b: rgba(255, 255, 255, 0);
+}
+
+/* ---------- Theme · High Contrast (light) ---------- */
+:root[data-contrast='more'][data-theme='light'] {
+  --bg-base: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #1c1c1f;
+  --text-tertiary: #3a3a3f;
+  --border-subtle: rgba(0, 0, 0, 0.5);
+  --border-strong: #000000;
+  --fill-active: rgba(0, 0, 0, 0.12);
+  --glass-fill: #ffffff;
+  --glass-border: rgba(0, 0, 0, 0.5);
+  --panel-fill: #ffffff;
+  --brand-1: #fff; --brand-2: #fff;
+  --purple-1: #fff; --purple-2: #fff;
+  --slate-1: #fff; --slate-2: #fff;
+  --sand-1: #fff; --sand-2: #fff;
+  --bw-strong-a: rgba(0, 0, 0, 0.14);
+  --bw-strong-b: rgba(0, 0, 0, 0.08);
+  --bw-soft-a: rgba(0, 0, 0, 0.08);
+  --bw-soft-b: rgba(0, 0, 0, 0);
+  --bw-a: rgba(0, 0, 0, 0.14);
+  --bw-b: rgba(0, 0, 0, 0);
+  --mock-border: rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Material · Solid (Reduce transparency) ---------- */
+:root[data-material='solid'] {
+  --glass-fill: var(--bg-elevated);
+  --glass-border: var(--border-subtle);
+  --glass-highlight: transparent;
+  --panel-fill: var(--bg-elevated);
+  --blur: 0px;
+}
+
+/* ---------- Text size ---------- */
+:root[data-text-size='lg'] { font-size: 115%; }
+:root[data-text-size='xl'] { font-size: 130%; }

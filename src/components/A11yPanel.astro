@@ -1,0 +1,59 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+const a = site.a11y;
+---
+<div id="a11y-panel" class="a11y" popover="auto" role="dialog" aria-labelledby="a11y-title" data-a11y>
+  <div class="a11y__grab" aria-hidden="true"></div>
+  <div class="a11y__head">
+    <h2 id="a11y-title" class="a11y__title" tabindex="-1">{a.title}</h2>
+    <button class="btn btn--icon a11y__close" type="button" popovertarget="a11y-panel" popovertargetaction="hide" aria-label={a.close}>
+      <Icon name="close" size={18} />
+    </button>
+  </div>
+
+  <fieldset class="a11y__group">
+    <legend class="t-label c-tertiary">{a.theme.label}</legend>
+    <div class="seg">
+      {a.theme.options.map(([value, label]) => (
+        <label class="seg__opt">
+          <input type="radio" name="theme" value={value} />
+          <span>{label}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <div class="a11y__toggles">
+    {a.toggles.map((t) => (
+      <label class="toggle">
+        <span class="toggle__text">
+          <span class="toggle__title">{t.title}</span>
+          <span class="toggle__hint">{t.hint}</span>
+        </span>
+        <input type="checkbox" role="switch" name={t.key} />
+        <span class="switch" aria-hidden="true"></span>
+      </label>
+    ))}
+  </div>
+
+  <fieldset class="a11y__group">
+    <legend class="t-label c-tertiary">{a.textSize.label}</legend>
+    <div class="seg">
+      {a.textSize.options.map(([value, label, name]) => (
+        <label class="seg__opt">
+          <input type="radio" name="textSize" value={value} aria-label={name} />
+          <span aria-hidden="true">{label}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+
+  <div class="a11y__foot">
+    <span class="t-label c-tertiary">{a.saved}</span>
+    <button class="btn btn--link" type="button" data-a11y-reset><span>{a.reset}</span></button>
+  </div>
+  <button class="btn btn--primary a11y__done" type="button" popovertarget="a11y-panel" popovertargetaction="hide">
+    <span>{a.done}</span>
+  </button>
+</div>

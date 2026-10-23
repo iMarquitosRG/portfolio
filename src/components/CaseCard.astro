@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Chip from './Chip.astro';
+import Icon from './Icon.astro';
+import Mockups from './Mockups.astro';
+import { site } from '../data/site';
+interface Props { entry: CollectionEntry<'cases'>; headingLevel?: 'h3' }
+const { entry } = Astro.props;
+const d = entry.data;
+const href = `/work/${entry.id}`;
+---
+<article class={`case-card surface tint-${d.tint}`} data-reveal>
+  <div class="case-card__cover grad" style={`view-transition-name: cover-${entry.id}`}>
+    <div class="case-card__word" aria-hidden="true"><span class="bigword">{d.bigWord}</span></div>
+    <Mockups class="case-card__mockups" parallax={-6} />
+    <span class="case-card__open btn btn--icon glass" aria-hidden="true"><Icon name="arrow-right" size={18} /></span>
+  </div>
+  <div class="case-card__text">
+    <Chip variant="outline">{d.tag}</Chip>
+    <h3 class="t-h2">{d.title}</h3>
+    <p class="c-secondary">{d.card.description}</p>
+    <dl class="meta-rows">
+      <div><dt class="t-label c-tertiary">Role</dt><dd>{d.tldr.role}</dd></div>
+      <div><dt class="t-label c-tertiary">Context</dt><dd>{d.card.context}</dd></div>
+      <div><dt class="t-label c-tertiary">Highlight</dt><dd>{d.card.highlight}</dd></div>
+    </dl>
+    <a class="btn btn--link case-card__link" href={href}>
+      <span>{site.home.work.cardLink}</span><span class="sr-only">: {d.title}</span>
+      <Icon name="arrow-right" />
+    </a>
+  </div>
+</article>

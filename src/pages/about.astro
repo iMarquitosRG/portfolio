@@ -1,0 +1,103 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Chip from '../components/Chip.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import portrait from '../assets/img/marcos-portrait.jpg';
+import { site } from '../data/site';
+const a = site.about;
+---
+<Base title="About" description="Product Designer from Mexico. Research, design systems and a technical background for B2B SaaS and Vertical AI teams." active="about">
+  <section class="frame grad tint-brand about-hero" aria-labelledby="about-title" data-hero>
+    <div class="about-hero__word" aria-hidden="true" data-parallax="-6"><span class="bigword bw-strong" data-bigword>{a.word}</span></div>
+    <div class="about-hero__copy">
+      <h1 id="about-title" class="t-display" data-split>{a.headline}</h1>
+      <p class="t-body-lg c-secondary" data-reveal>{a.sub}</p>
+      <ul class="chips" data-reveal>
+        {a.chips.map((c) => <li><Chip>{c}</Chip></li>)}
+      </ul>
+    </div>
+    <div class="portrait" data-reveal>
+      <Image src={portrait} alt="Portrait of Marcos Rivera" widths={[400, 700, 920]} sizes="(min-width: 1200px) 460px, (min-width: 744px) 340px, 100vw" loading="eager" fetchpriority="high" />
+    </div>
+  </section>
+
+  <div class="content">
+    <section class="split" aria-labelledby="story-title">
+      <div class="split__head"><p class="t-label c-tertiary" data-reveal>{a.story.label}</p><h2 id="story-title" class="t-h2" data-split>{a.story.title}</h2></div>
+      <div class="split__body">
+        {a.story.paragraphs.map((p) => <p class="t-body-lg c-secondary" data-reveal>{p}</p>)}
+      </div>
+    </section>
+
+    <section class="split" aria-labelledby="process-title">
+      <div class="split__head"><p class="t-label c-tertiary" data-reveal>{a.process.label}</p><h2 id="process-title" class="t-h2" data-split>{a.process.title}</h2></div>
+      <ol class="process">
+        {a.process.steps.map((s) => (
+          <li class="surface card" data-reveal>
+            <span class="t-label c-tertiary">{s.n}</span>
+            <span class="card__body"><span class="t-h3">{s.title}</span><span class="c-secondary">{s.text}</span></span>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="split" aria-labelledby="code-title">
+      <div class="split__head"><p class="t-label c-tertiary" data-reveal>{a.code.label}</p><h2 id="code-title" class="t-h2" data-split>{a.code.title}</h2></div>
+      <div class="split__body">
+        <p class="t-body-lg c-secondary" data-reveal>{a.code.intro}</p>
+        <ul class="grid-3">
+          {a.code.cards.map((c) => (
+            <li class="surface card" data-reveal><span class="t-body-lg t-medium">{c.title}</span><span class="t-small c-secondary">{c.text}</span></li>
+          ))}
+        </ul>
+        <pre class="code-snippet" data-reveal aria-label="CSS from this site"><code>{a.code.snippet.map((line, i) => i === 0 ? <span class="c">{line}{'\n'}</span> : <span>{line}{'\n'}</span>)}</code></pre>
+      </div>
+    </section>
+
+    <section class="split" aria-labelledby="exp-title">
+      <div class="split__head"><p class="t-label c-tertiary" data-reveal>{a.experience.label}</p><h2 id="exp-title" class="t-h2" data-split>{a.experience.title}</h2></div>
+      <ul class="experience">
+        {a.experience.items.map((e) => (
+          <li data-reveal>
+            <h3 class="t-h3">{e.role}</h3>
+            <p class="c-secondary">{e.company}</p>
+            <p class="t-small c-tertiary">{e.text}</p>
+            <p class="experience__dates t-label c-tertiary">{e.dates}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="split" aria-labelledby="toolkit-title">
+      <div class="split__head"><p class="t-label c-tertiary" data-reveal>{a.toolkit.label}</p><h2 id="toolkit-title" class="t-h2" data-split>{a.toolkit.title}</h2></div>
+      <div class="toolkit">
+        {a.toolkit.groups.map((g) => (
+          <div class="surface card" data-reveal>
+            <h3 class="t-body-lg t-medium">{g.title}</h3>
+            <ul class="pills">{g.items.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="split" id="built" aria-labelledby="built-title">
+      <div class="split__head"><p class="t-label c-tertiary" data-reveal>{a.built.label}</p><h2 id="built-title" class="t-h2" data-split>{a.built.title}</h2></div>
+      <div class="split__body">
+        <p class="t-body-lg c-secondary" data-reveal>{a.built.text}</p>
+        <ol class="built">
+          {a.built.steps.map((s) => (
+            <li data-reveal>
+              <div class={`built__thumb grad tint-${s.tint}`} aria-hidden="true"></div>
+              <span class="built__label"><span class="c-tertiary">{s.n}</span>{s.title}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <Contact variant="full" />
+    <Footer />
+  </div>
+</Base>

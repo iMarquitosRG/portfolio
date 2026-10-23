@@ -1,0 +1,45 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+import Mockups from './Mockups.astro';
+interface Props { cases: CollectionEntry<'cases'>[] }
+const { cases } = Astro.props;
+const total = String(cases.length).padStart(2, '0');
+---
+<div class="slider glass" role="region" aria-roledescription="carousel" aria-label="Featured case studies" data-slider>
+  <div class="slider__track" aria-live="off" data-slider-track>
+    {cases.map((c, i) => (
+      <a
+        class="slider__slide"
+        href={`/work/${c.id}`}
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`${i + 1} of ${cases.length}: ${c.data.title}`}
+        data-slide
+        data-active={i === 0 ? '' : undefined}
+        tabindex={i === 0 ? undefined : -1}
+      >
+        <span class="slider__thumb">
+          <Mockups class="slider__mockups" />
+          <span class="slider__open btn btn--icon glass" aria-hidden="true"><Icon name="arrow-right" size={16} /></span>
+        </span>
+        <span class="slider__meta">
+          <span class="t-label c-tertiary">{String(i + 1).padStart(2, '0')} / {total}</span>
+          <span class="slider__title t-medium">{c.data.title}</span>
+        </span>
+      </a>
+    ))}
+  </div>
+  <div class="slider__controls">
+    <button class="slider__pause" type="button" aria-label="Pause slideshow" data-slider-pause>
+      <Icon name="pause" size={12} class="i-pause" /><Icon name="play" size={12} class="i-play" />
+    </button>
+    <div class="slider__dots">
+      {cases.map((c, i) => (
+        <button class="slider__dot" type="button" aria-label={`Show ${c.data.title}`} aria-current={i === 0 ? 'true' : undefined} data-slider-dot={i}>
+          <span></span>
+        </button>
+      ))}
+    </div>
+  </div>
+</div>

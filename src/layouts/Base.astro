@@ -1,0 +1,84 @@
+---
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/components.css';
+import TopBar from '../components/TopBar.astro';
+import BottomNav from '../components/BottomNav.astro';
+import A11yPanel from '../components/A11yPanel.astro';
+import Toast from '../components/Toast.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: 'work' | 'about' | 'none';
+  back?: boolean;
+}
+const { title, description = site.seo.description, active = 'work', back = false } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : site.seo.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.png', Astro.site);
+---
+<!doctype html>
+<html lang="en" data-theme="dark" data-material="glass" data-motion="full" data-contrast="normal" data-text-size="base">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#0a0a0b" />
+    <meta name="author" content={site.name} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Accessibility settings applied before first paint (no flash). -->
+    <script is:inline>
+      (function () {
+        var d = document.documentElement, p = {};
+        try { p = JSON.parse(localStorage.getItem('mr-prefs') || '{}') || {}; } catch (e) {}
+        var mq = function (q) { return !!(window.matchMedia && window.matchMedia(q).matches); };
+        var pick = function (k, q) { return typeof p[k] === 'boolean' ? p[k] : mq(q); };
+        var pref = p.theme || 'dark';
+        d.dataset.themePref = pref;
+        d.dataset.theme = pref === 'system' ? (mq('(prefers-color-scheme: light)') ? 'light' : 'dark') : pref;
+        d.dataset.material = pick('transparency', '(prefers-reduced-transparency: reduce)') ? 'solid' : 'glass';
+        d.dataset.motion = pick('motion', '(prefers-reduced-motion: reduce)') ? 'reduce' : 'full';
+        d.dataset.contrast = pick('contrast', '(prefers-contrast: more)') ? 'more' : 'normal';
+        d.dataset.textSize = p.textSize || 'base';
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', d.dataset.theme === 'light' ? '#fafafa' : '#0a0a0b');
+        if (d.dataset.motion === 'full') {
+          d.classList.add('js-motion');
+          // Failsafe: never keep content hidden if the motion script is slow or blocked.
+          setTimeout(function () { if (!window.__motionReady) d.classList.remove('js-motion'); }, 2500);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <span id="top"></span>
+    <a class="skip" href="#main">Skip to content</a>
+    <TopBar active={active} back={back} />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <BottomNav active={active} />
+    <A11yPanel />
+    <Toast />
+    <script>
+      import '../scripts/app';
+    </script>
+  </body>
+</html>

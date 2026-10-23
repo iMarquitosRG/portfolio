@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Chip from '../components/Chip.astro';
+import Button from '../components/Button.astro';
+import Slider from '../components/Slider.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import CaseCard from '../components/CaseCard.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import portrait from '../assets/img/marcos-portrait.jpg';
+import { site } from '../data/site';
+
+const cases = (await getCollection('cases')).sort((a, b) => a.data.order - b.data.order);
+const h = site.home;
+---
+<Base active="work">
+  <section class="frame grad tint-brand hero" aria-labelledby="hero-title" data-hero>
+    <div class="hero__words" aria-hidden="true" data-parallax="-6">
+      <span class="bigword bw-strong" data-bigword>{h.words[0]}</span>
+      <span class="bigword bw-soft" data-bigword>{h.words[1]}</span>
+    </div>
+    <div class="hero__copy">
+      <div data-reveal><Chip dot>{site.status}</Chip></div>
+      <h1 id="hero-title" class="t-h1" data-split>{h.headline}</h1>
+      <p class="t-body-lg c-secondary" data-reveal>{h.sub}</p>
+      <div class="hero__ctas" data-reveal>
+        <Button variant="primary" href="#work" icon="arrow-right" magnetic>{h.ctaWork}</Button>
+        <Button variant="secondary" href={site.resume} icon="arrow-up-right" external>Resume</Button>
+      </div>
+    </div>
+    <div class="hero__slider" data-reveal><Slider cases={cases} /></div>
+    <span class="hero__hint t-label c-tertiary" aria-hidden="true">{h.scrollHint}</span>
+  </section>
+
+  <div class="content">
+    <section class="section section--work" id="work" aria-labelledby="work-title">
+      <SectionHeader id="work-title" label={h.work.label} title={h.work.title} lead={h.work.lead} />
+      <div class="cases">
+        {cases.map((entry) => <CaseCard entry={entry} />)}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="other-title">
+      <SectionHeader id="other-title" label={h.other.label} title={h.other.title} />
+      <ul class="other">
+        {h.other.items.map((item) => (
+          <li class="other__item" data-reveal>
+            <div class={`other__thumb grad tint-${item.tint}`} aria-hidden="true"><div class="mock"></div></div>
+            <div class="other__meta">
+              <h3 class="t-body-lg t-medium">{item.title}</h3>
+              <p class="t-small c-secondary">{item.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="about-strip" aria-labelledby="about-strip-title">
+      <p class="t-label c-tertiary" data-reveal>{h.about.label}</p>
+      <div class="about-strip__row">
+        <div class="portrait" data-reveal>
+          <Image src={portrait} alt="Portrait of Marcos Rivera" widths={[360, 600, 800]} sizes="(min-width: 1200px) 400px, (min-width: 744px) 300px, 100vw" />
+        </div>
+        <div class="about-strip__text">
+          <h2 id="about-strip-title" class="t-h2" data-split>{h.about.statement}</h2>
+          <dl class="stats" data-reveal>
+            {h.about.stats.map((s) => (
+              <div>
+                <dt class="t-small c-secondary">{s.label}</dt>
+                <dd class="t-h1" data-count={/^\d+$/.test(s.value) ? s.value : undefined}>{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <div data-reveal><Button variant="link" href="/about" icon="arrow-right">{h.about.link}</Button></div>
+        </div>
+      </div>
+    </section>
+
+    <Contact variant="full" />
+    <Footer />
+  </div>
+</Base>

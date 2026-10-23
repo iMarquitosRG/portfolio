@@ -1,0 +1,9 @@
+---
+/** Tablet + phone device placeholders. Swap for real screenshots later. */
+interface Props { class?: string; parallax?: number }
+const { class: cls, parallax } = Astro.props;
+---
+<div class:list={['mockups', cls]} aria-hidden="true" data-parallax={parallax}>
+  <div class="mock mock--tablet"></div>
+  <div class="mock mock--phone"></div>
+</div>

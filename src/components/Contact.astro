@@ -1,0 +1,38 @@
+---
+import Button from './Button.astro';
+import Chip from './Chip.astro';
+import { site } from '../data/site';
+interface Props { variant?: 'full' | 'compact' }
+const { variant = 'full' } = Astro.props;
+const c = site.contact;
+const full = variant === 'full';
+---
+<section class:list={['contact', 'grad', 'tint-brand', `contact--${variant}`]} id="contact" aria-labelledby="contact-title">
+  {full && (
+    <div class="contact__word" aria-hidden="true" data-parallax="-8">
+      <span class="bigword bw-soft" data-bigword>{c.word}</span>
+    </div>
+  )}
+  <div class="contact__body">
+    <Chip dot data-reveal>{site.status}</Chip>
+    <h2 id="contact-title" class:list={[full ? 't-h1' : 't-h2']} data-split>
+      {full ? c.headline : c.compactHeadline}
+    </h2>
+    {full && <p class="t-body-lg c-secondary" data-reveal>{c.sub}</p>}
+    <div class="contact__actions" data-reveal>
+      <Button variant="primary" href={`mailto:${site.email}`} icon="copy" magnetic data-copy-email={site.email} aria-label={`${c.email} (copies ${site.email})`}>{c.email}</Button>
+      <Button variant="secondary" href={site.linkedin} icon="arrow-up-right" external>LinkedIn</Button>
+      <Button variant="secondary" href={site.resume} icon="arrow-up-right" external>Resume</Button>
+    </div>
+    {full && (
+      <dl class="contact__meta" data-reveal>
+        {c.meta.map((m) => (
+          <div>
+            <dt class="t-label c-tertiary">{m.label}</dt>
+            <dd class="t-medium">{'live' in m && m.live ? <span data-localtime>{m.value}</span> : m.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+</section>

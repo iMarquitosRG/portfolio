@@ -1,0 +1,21 @@
+---
+import { site } from '../data/site';
+interface Props { active?: string }
+const { active = 'work' } = Astro.props;
+---
+<nav class="bottomnav glass" aria-label="Main" data-bottomnav>
+  <ul>
+    {site.nav.map((item) => (
+      <li>
+        <a
+          class="navitem"
+          href={item.href}
+          aria-current={item.key === active ? 'page' : undefined}
+          {...('external' in item && item.external ? { target: '_blank', rel: 'noopener' } : {})}
+        >
+          {item.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>

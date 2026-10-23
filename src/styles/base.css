@@ -111,6 +111,9 @@ p { text-wrap: pretty; }
   background:
     var(--vignette),
     linear-gradient(135deg, var(--t1) 0%, var(--t2) 50%, var(--bg-base) 100%);
+  /* Draw the gradient once, edge to edge (no repeat into the border area). */
+  background-origin: border-box;
+  background-repeat: no-repeat;
 }
 .tint-brand { --t1: var(--brand-1); --t2: var(--brand-2); }
 .tint-purple { --t1: var(--purple-1); --t2: var(--purple-2); }

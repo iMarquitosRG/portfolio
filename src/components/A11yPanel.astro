@@ -4,8 +4,8 @@ import { site } from '../data/site';
 const a = site.a11y;
 ---
 <div id="a11y-panel" class="a11y" popover="auto" role="dialog" aria-labelledby="a11y-title" data-a11y>
-  <div class="a11y__grab" aria-hidden="true"></div>
-  <div class="a11y__head">
+  <div class="a11y__grab" aria-hidden="true" data-sheet-grab></div>
+  <div class="a11y__head" data-sheet-handle>
     <h2 id="a11y-title" class="a11y__title" tabindex="-1">{a.title}</h2>
     <button class="btn btn--icon a11y__close" type="button" popovertarget="a11y-panel" popovertargetaction="hide" aria-label={a.close}>
       <Icon name="close" size={18} />
@@ -50,10 +50,10 @@ const a = site.a11y;
   </fieldset>
 
   <div class="a11y__foot">
-    <span class="t-label c-tertiary">{a.saved}</span>
+    <span class="t-label c-tertiary a11y__saved">{a.saved}</span>
     <button class="btn btn--link" type="button" data-a11y-reset><span>{a.reset}</span></button>
+    <button class="btn btn--primary a11y__done" type="button" popovertarget="a11y-panel" popovertargetaction="hide">
+      <span>{a.done}</span>
+    </button>
   </div>
-  <button class="btn btn--primary a11y__done" type="button" popovertarget="a11y-panel" popovertargetaction="hide">
-    <span>{a.done}</span>
-  </button>
 </div>

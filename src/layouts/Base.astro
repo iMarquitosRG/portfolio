@@ -50,7 +50,7 @@ const ogImage = new URL('/og.png', Astro.site);
         try { p = JSON.parse(localStorage.getItem('mr-prefs') || '{}') || {}; } catch (e) {}
         var mq = function (q) { return !!(window.matchMedia && window.matchMedia(q).matches); };
         var pick = function (k, q) { return typeof p[k] === 'boolean' ? p[k] : mq(q); };
-        var pref = p.theme || 'dark';
+        var pref = p.theme || 'system'; // default: follow the OS
         d.dataset.themePref = pref;
         d.dataset.theme = pref === 'system' ? (mq('(prefers-color-scheme: light)') ? 'light' : 'dark') : pref;
         d.dataset.material = pick('transparency', '(prefers-reduced-transparency: reduce)') ? 'solid' : 'glass';

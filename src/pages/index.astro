@@ -9,6 +9,7 @@ import SectionHeader from '../components/SectionHeader.astro';
 import CaseCard from '../components/CaseCard.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import QuickView from '../components/QuickView.astro';
 import portrait from '../assets/img/marcos-portrait.jpg';
 import { site } from '../data/site';
 
@@ -45,16 +46,23 @@ const h = site.home;
     <section class="section" aria-labelledby="other-title">
       <SectionHeader id="other-title" label={h.other.label} title={h.other.title} />
       <ul class="other">
-        {h.other.items.map((item) => (
-          <li class="other__item" data-reveal>
+        {h.other.items.map((item, i) => (
+          <li class="other__item qv-card" data-reveal>
             <div class={`other__thumb grad tint-${item.tint}`} aria-hidden="true"><div class="mock"></div></div>
             <div class="other__meta">
-              <h3 class="t-body-lg t-medium">{item.title}</h3>
+              <h3 class="t-body-lg t-medium">
+                <button class="qv-card__open" type="button" aria-haspopup="dialog" data-qv-open="qv-other" data-qv-index={i}>{item.title}</button>
+              </h3>
               <p class="t-small c-secondary">{item.text}</p>
             </div>
           </li>
         ))}
       </ul>
+      <QuickView
+        id="qv-other"
+        label={h.other.label}
+        items={h.other.items.map((it) => ({ title: it.title, line: it.text, body: it.body, facts: it.facts, link: it.link, images: it.images, tint: it.tint }))}
+      />
     </section>
 
     <section class="about-strip" aria-labelledby="about-strip-title">

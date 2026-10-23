@@ -13,9 +13,9 @@ export const site = {
   status: 'Open to full-time roles',
 
   seo: {
-    title: 'Marcos Rivera · Product Designer for B2B SaaS and Vertical AI',
+    title: 'Marcos Rivera · Product & UX/UI Designer for B2B SaaS and Vertical AI',
     description:
-      'Product Designer from Mexico. Research, design systems and shipped UI for B2B SaaS and AI products. Open to full-time remote roles.',
+      'Product and UX/UI Designer from Mexico. Research, design systems and shipped UI for B2B SaaS and AI products. Open to full-time remote roles.',
   },
 
   nav: [
@@ -28,7 +28,7 @@ export const site = {
   home: {
     words: ['PRODUCT', 'DESIGNER'],
     headline: 'I design calm, precise tools for B2B SaaS and Vertical AI teams.',
-    sub: 'Product Designer · UX Research · Design Systems · Based in Mexico, working remote',
+    sub: 'Product Designer · UX/UI Design · UX Research · Design Systems · Based in Mexico, working remote',
     ctaWork: 'View work',
     scrollHint: 'Scroll to explore',
     work: {
@@ -40,11 +40,36 @@ export const site = {
     other: {
       label: 'Other work',
       title: 'Smaller projects and websites.',
+      /*
+        Quick view (modal) content. Images only: add up to 3 per item as
+        { src: '/work/axomy-1.webp', alt: '...' } (files in /public/work/).
+        Until then the modal shows 3 placeholder slides. `link` shows "Visit site" when set.
+      */
       items: [
-        { title: 'Axomy CRM', text: 'Internal CRM, 0 → 1', tint: 'slate' },
-        { title: 'Activated Decor', text: 'E-commerce redesign', tint: 'sand' },
-        { title: 'Landing pages', text: 'Framer, Figma, Wix', tint: 'slate' },
-        { title: 'zealix.io', text: 'Marketing website', tint: 'brand' },
+        {
+          title: 'Axomy CRM', text: 'Internal CRM, 0 → 1', tint: 'slate',
+          body: '[2 to 3 lines: the problem, what you designed and what changed. A quick look, not a full case study.]',
+          facts: [['Role', 'Product Designer'], ['Year', '[Year]'], ['Tools', 'Figma · [Tools]']],
+          link: null, images: [],
+        },
+        {
+          title: 'Activated Decor', text: 'E-commerce redesign', tint: 'sand',
+          body: '[2 to 3 lines: the problem, what you designed and what changed. A quick look, not a full case study.]',
+          facts: [['Role', 'Product Designer'], ['Year', '[Year]'], ['Tools', 'Figma · [Tools]']],
+          link: null, images: [],
+        },
+        {
+          title: 'Landing pages', text: 'Framer, Figma, Wix', tint: 'slate',
+          body: '[2 to 3 lines: which landing pages, who they were for and what you built.]',
+          facts: [['Role', 'Designer and builder'], ['Year', '[Year]'], ['Tools', 'Framer · Figma · Wix']],
+          link: null, images: [],
+        },
+        {
+          title: 'zealix.io', text: 'Marketing website', tint: 'brand',
+          body: '[2 to 3 lines: what the site needed to explain and how you designed it.]',
+          facts: [['Role', 'Product Designer'], ['Year', '[Year]'], ['Tools', 'Figma · [Tools]']],
+          link: 'https://zealix.io', images: [],
+        },
       ],
     },
     about: {
@@ -63,7 +88,7 @@ export const site = {
   about: {
     word: 'ABOUT',
     headline: 'Hi, I’m Marcos.',
-    sub: 'Product Designer from Mexico. I turn messy operations into calm, precise tools.',
+    sub: 'Product and UX/UI Designer from Mexico. I turn messy operations into calm, precise tools.',
     chips: ['Monterrey / Puebla, MX', 'Remote or relocation', 'English C1'],
     story: {
       label: 'Story',
@@ -133,16 +158,40 @@ export const site = {
       title: 'Lo-fi → design system → hi-fi → code.',
       text: 'This site is its own case study: grayscale wireframes first, then a token system where every accessibility setting is a variable mode, then hi-fi, then code.',
       steps: [
-        { n: '01', title: 'Lo-fi', tint: 'slate' },
-        { n: '02', title: 'Tokens + modes', tint: 'brand' },
-        { n: '03', title: 'Hi-fi', tint: 'purple' },
-        { n: '04', title: 'Code', tint: 'sand' },
+        {
+          n: '01', title: 'Lo-fi', tint: 'slate',
+          text: 'Grayscale wireframes for every page and breakpoint.',
+          body: '[2 to 3 lines: what this step produced and how it fed the next one.]',
+          facts: [['Step', '01 of 04'], ['Tool', 'Figma'], ['Output', '[Pages and breakpoints]']],
+          link: null, images: [],
+        },
+        {
+          n: '02', title: 'Tokens + modes', tint: 'brand',
+          text: 'Every accessibility setting is a variable mode.',
+          body: '[2 to 3 lines: what this step produced and how it fed the next one.]',
+          facts: [['Step', '02 of 04'], ['Tool', 'Figma variables'], ['Output', '[4 collections, 9 modes]']],
+          link: null, images: [],
+        },
+        {
+          n: '03', title: 'Hi-fi', tint: 'purple',
+          text: 'Glass, type and motion on top of the system.',
+          body: '[2 to 3 lines: what this step produced and how it fed the next one.]',
+          facts: [['Step', '03 of 04'], ['Tool', 'Figma'], ['Output', '[Screens, components, states]']],
+          link: null, images: [],
+        },
+        {
+          n: '04', title: 'Code', tint: 'sand',
+          text: 'Astro and GSAP, with tokens mapped 1:1 from Figma.',
+          body: '[2 to 3 lines: what this step produced and how it fed the next one.]',
+          facts: [['Step', '04 of 04'], ['Tool', 'Astro · GSAP'], ['Output', '[This site]']],
+          link: null, images: [],
+        },
       ],
     },
   },
 
   contact: {
-    headline: 'Looking for my next full-time Product Design role.',
+    headline: 'Looking for my next full-time Product Design or UX/UI role.',
     sub: 'B2B SaaS and Vertical AI teams. Remote, or ready to relocate.',
     compactHeadline: 'Like this case? Let’s talk about your team.',
     email: 'Email me',
@@ -179,6 +228,19 @@ export const site = {
     saved: 'Saved on this device',
     reset: 'Reset',
     done: 'Done',
+  },
+
+  quickView: {
+    close: 'Close',
+    prevImage: 'Previous image',
+    nextImage: 'Next image',
+    goToImage: 'Show image',
+    prevItem: 'Previous',
+    nextItem: 'Next',
+    visit: 'Visit site',
+    image: 'Image',
+    of: 'of',
+    open: 'Quick view',
   },
 
   notFound: {

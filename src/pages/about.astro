@@ -4,11 +4,12 @@ import Base from '../layouts/Base.astro';
 import Chip from '../components/Chip.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import QuickView from '../components/QuickView.astro';
 import portrait from '../assets/img/marcos-portrait.jpg';
 import { site } from '../data/site';
 const a = site.about;
 ---
-<Base title="About" description="Product Designer from Mexico. Research, design systems and a technical background for B2B SaaS and Vertical AI teams." active="about">
+<Base title="About" description="Product and UX/UI Designer from Mexico. Research, design systems and a technical background for B2B SaaS and Vertical AI teams." active="about">
   <section class="frame grad tint-brand about-hero" aria-labelledby="about-title" data-hero>
     <div class="about-hero__word" aria-hidden="true" data-parallax="-6"><span class="bigword bw-strong" data-bigword>{a.word}</span></div>
     <div class="about-hero__copy">
@@ -87,13 +88,18 @@ const a = site.about;
       <div class="split__body">
         <p class="t-body-lg c-secondary" data-reveal>{a.built.text}</p>
         <ol class="built">
-          {a.built.steps.map((s) => (
-            <li data-reveal>
+          {a.built.steps.map((s, i) => (
+            <li class="qv-card" data-reveal>
               <div class={`built__thumb grad tint-${s.tint}`} aria-hidden="true"></div>
-              <span class="built__label"><span class="c-tertiary">{s.n}</span>{s.title}</span>
+              <span class="built__label"><span class="c-tertiary">{s.n}</span><button class="qv-card__open" type="button" aria-haspopup="dialog" data-qv-open="qv-built" data-qv-index={i}>{s.title}</button></span>
             </li>
           ))}
         </ol>
+        <QuickView
+          id="qv-built"
+          label={a.built.label}
+          items={a.built.steps.map((st) => ({ title: st.title, line: st.text, body: st.body, facts: st.facts, link: st.link, images: st.images, tint: st.tint }))}
+        />
       </div>
     </section>
 

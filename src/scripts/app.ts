@@ -3,6 +3,7 @@ import { initNav } from './nav';
 import { initSlider } from './slider';
 import { initContact } from './contact';
 import { initCaseIndex } from './case-index';
+import { initQuickView } from './quickview';
 
 const root = document.documentElement;
 
@@ -11,6 +12,7 @@ initNav();
 initSlider();
 initContact();
 initCaseIndex();
+initQuickView();
 
 // Motion is the heaviest piece (GSAP), so it loads only when motion is allowed.
 let motionLoaded = false;

@@ -6,6 +6,8 @@ type Prefs = {
   contrast?: boolean;
   textSize?: 'base' | 'lg' | 'xl';
 };
+import { sheetDrag, isPhone, reset } from './sheet';
+
 const KEY = 'mr-prefs';
 const root = document.documentElement;
 const mq = (q: string) => window.matchMedia?.(q).matches ?? false;
@@ -18,7 +20,7 @@ function save(p: Prefs) {
 }
 
 function apply(p: Prefs) {
-  const pref = p.theme ?? 'dark';
+  const pref = p.theme ?? 'system';
   root.dataset.themePref = pref;
   root.dataset.theme = pref === 'system' ? (mq('(prefers-color-scheme: light)') ? 'light' : 'dark') : pref;
   root.dataset.material = (p.transparency ?? mq('(prefers-reduced-transparency: reduce)')) ? 'solid' : 'glass';
@@ -63,13 +65,18 @@ export function initPrefs() {
 
   // Follow the OS when the person hasn't chosen.
   window.matchMedia?.('(prefers-color-scheme: light)').addEventListener('change', () => {
-    if ((prefs.theme ?? 'dark') === 'system') apply(prefs);
+    if ((prefs.theme ?? 'system') === 'system') apply(prefs);
   });
+
+  sheetDrag(panel, () => panel.hidePopover());
 
   // Focus management + aria-expanded (popover handles Esc and outside click).
   panel.addEventListener('toggle', (e) => {
     const open = (e as ToggleEvent).newState === 'open';
     trigger?.setAttribute('aria-expanded', String(open));
+    // On phones the panel is a bottom sheet: keep the page behind it still.
+    root.style.overflow = open && isPhone() ? 'hidden' : '';
+    if (!open) reset(panel);
     if (open) {
       sync(panel);
       panel.querySelector<HTMLElement>('#a11y-title')?.focus();

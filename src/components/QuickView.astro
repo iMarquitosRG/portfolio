@@ -1,0 +1,68 @@
+---
+/**
+ * Quick view: a short, images-only look at a small item (Other work cards,
+ * "How I built this site" steps). Desktop/tablet = centered dialog,
+ * phones = bottom sheet you can drag down. Filled by src/scripts/quickview.ts.
+ */
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+export interface QVItem {
+  title: string;
+  line: string;
+  body: string;
+  facts: readonly (readonly [string, string])[];
+  link: string | null;
+  images: readonly { src: string; alt: string }[];
+  tint: string;
+}
+interface Props { id: string; label: string; items: QVItem[] }
+const { id, label, items } = Astro.props;
+const q = site.quickView;
+---
+<dialog id={id} class="qv" aria-labelledby={`${id}-title`} data-qv={id} data-qv-label={label}>
+  <div class="qv__grab" aria-hidden="true" data-sheet-grab></div>
+  <header class="qv__head" data-sheet-handle>
+    <div class="qv__titles">
+      <p class="t-label c-tertiary" data-qv-eyebrow></p>
+      <h2 id={`${id}-title`} class="qv__title" tabindex="-1" data-qv-title></h2>
+    </div>
+    <button class="btn btn--icon glass qv__close" type="button" aria-label={q.close} data-qv-close>
+      <Icon name="close" size={18} />
+    </button>
+  </header>
+
+  <div class="qv__media" data-qv-media>
+    <div class="qv__track" data-qv-track tabindex="0" role="group" aria-roledescription="carousel"></div>
+    <button class="btn btn--icon glass qv__img-btn qv__img-btn--prev" type="button" aria-label={q.prevImage} data-qv-img="-1">
+      <Icon name="arrow-left" size={18} />
+    </button>
+    <button class="btn btn--icon glass qv__img-btn qv__img-btn--next" type="button" aria-label={q.nextImage} data-qv-img="1">
+      <Icon name="arrow-right" size={18} />
+    </button>
+    <p class="t-label qv__img-label" aria-live="polite" data-qv-img-label></p>
+    <div class="qv__dots" data-qv-dots></div>
+  </div>
+
+  <div class="qv__body">
+    <div class="qv__text">
+      <p class="t-body-lg t-medium" data-qv-line></p>
+      <p class="c-secondary" data-qv-copy></p>
+    </div>
+    <dl class="qv__facts" data-qv-facts></dl>
+  </div>
+
+  <footer class="qv__foot">
+    <a class="btn btn--secondary glass qv__cta" href="#" target="_blank" rel="noopener" data-qv-link>
+      <span>{q.visit}</span><Icon name="arrow-up-right" size={16} />
+    </a>
+    <div class="qv__nav">
+      <button class="btn btn--icon glass" type="button" aria-label={q.prevItem} data-qv-step="-1"><Icon name="arrow-left" size={18} /></button>
+      <span class="t-label c-secondary qv__count" data-qv-count></span>
+      <button class="btn btn--icon glass" type="button" aria-label={q.nextItem} data-qv-step="1"><Icon name="arrow-right" size={18} /></button>
+    </div>
+  </footer>
+
+  <script is:inline type="application/json" data-qv-items set:html={JSON.stringify(items)} />
+  <script is:inline type="application/json" data-qv-strings set:html={JSON.stringify(q)} />
+</dialog>

@@ -374,6 +374,7 @@
   border-radius: var(--r-hero);
   transition: border-color var(--dur) ease;
 }
+.case-card { cursor: pointer; }
 .case-card:hover { border-color: var(--border-strong); }
 .case-card__cover {
   position: relative;
@@ -388,12 +389,16 @@
 .case-card__mockups .mock--phone { position: absolute; left: 63%; top: 34%; width: 17%; }
 .case-card:hover .mock--tablet { translate: 0 -8px; }
 .case-card:hover .mock--phone { translate: 0 -14px; }
-.case-card__open { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; min-height: 44px; transition: scale var(--dur) var(--ease-spring); }
+.case-card__open { position: absolute; z-index: 3; top: 16px; right: 16px; width: 44px; height: 44px; min-height: 44px; transition: scale var(--dur) var(--ease-spring); }
 .case-card:hover .case-card__open { scale: 1.08; }
 .case-card__text { display: grid; gap: 16px; align-content: center; padding: 0 8px; }
 .case-card__text > p { max-width: 460px; }
 .case-card__link { justify-self: start; margin-top: 4px; }
 .case-card__link { position: static; } /* so the overlay below covers the whole card, arrow included */
+/* No press-scale here: a transform would make the link the overlay's containing block,
+   shrinking the overlay mid-click so the click lands elsewhere and gets cancelled. */
+.case-card__link:active { scale: none; }
+.case-card:active { scale: 0.995; transition: scale var(--dur-fast) var(--ease-out); }
 .case-card__link::before { content: ''; position: absolute; inset: 0; border-radius: var(--r-hero); z-index: 2; } /* whole card is the link */
 .case-card { border-radius: var(--r-hero); }
 .case-card:has(.case-card__link:focus-visible) { outline: 2px solid var(--focus); outline-offset: 3px; }

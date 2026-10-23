@@ -22,7 +22,7 @@ const block = z.discriminatedUnion('type', [
   z.object({
     type: z.literal('decisions'),
     items: z.array(
-      z.object({ eyebrow: z.string(), title: z.string(), text: z.string(), before: media, after: media }),
+      z.object({ eyebrow: z.string(), title: z.string(), text: z.string(), before: media.optional(), after: media }),
     ),
   }),
   z.object({ type: z.literal('rounds'), items: z.array(z.object({ label: z.string(), text: z.string() })) }),

@@ -57,8 +57,8 @@ const { section: s } = Astro.props;
                   <h3 class="t-h3">{d.title}</h3>
                   <p class="c-secondary">{d.text}</p>
                 </div>
-                <div class="decision__media">
-                  <Media {...d.before} />
+                <div class:list={['decision__media', !d.before && 'decision__media--single']}>
+                  {d.before && <Media {...d.before} />}
                   <Media {...d.after} />
                 </div>
               </li>
@@ -67,7 +67,7 @@ const { section: s } = Astro.props;
         );
       case 'rounds':
         return (
-          <ol class="grid-3 rounds">
+          <ol class:list={['grid-3', 'rounds', b.items.length === 2 && 'grid-3--two']}>
             {b.items.map((r, i) => (
               <li class:list={['surface', 'card', i === 1 && 'card--elevated']} data-reveal>
                 <span class="t-label c-tertiary">{r.label}</span>

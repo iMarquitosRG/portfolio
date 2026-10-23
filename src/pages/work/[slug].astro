@@ -30,8 +30,8 @@ const tldr = [
     <div class="cover__copy">
       <div data-reveal><Chip>{d.tag}</Chip></div>
       <h1 id="case-title" class="t-display" data-split>{d.title}</h1>
-      <p class="t-body-lg c-secondary" data-reveal>{d.description}</p>
     </div>
+    <p class="t-body-lg c-secondary cover__desc" data-reveal>{d.description}</p>
     <dl class="tldr glass" data-reveal>
       {tldr.map(([k, v]) => <div><dt class="t-label c-tertiary">{k}</dt><dd>{v}</dd></div>)}
     </dl>

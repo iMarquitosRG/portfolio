@@ -5,26 +5,26 @@ title: Zealix Admin Layer
 bigWord: ADMIN
 tint: slate
 tag: Part of Zealix · 2 of 2
-description: Finance and multibranch management for restaurant owners, designed from 0 to 1, including Zea, an AI concept for demand forecasting.
+description: Finance and multibranch management for restaurant owners, designed from 0 to 1, including Zea, an AI assistant that turns sales trends into ideas.
 card:
-  description: Finance and multibranch management for restaurant owners, including Zea, an AI concept for demand forecasting.
+  description: Finance and multibranch management for restaurant owners, including Zea, an AI assistant that turns sales trends into ideas.
   context: Zealix, 2023 to 2025
   highlight: AI demand forecasting
 tldr:
   role: Product Designer, UX Research
   timeline: 2023 to 2025
   platforms: Web · Mobile · Tablet
-  outcome: AI forecasting concept
+  outcome: Bulk actions across branches
 next: viaxo
 nextSummary: Travel agency management app with about 40% less admin time.
-seoDescription: How I designed finance and multibranch management for restaurant owners, and the UX of Zea, an AI concept for demand forecasting.
+seoDescription: How I designed finance and multibranch management for restaurant owners, and the UX of Zea, an AI assistant that turns sales trends into ideas.
 
 sections:
   - id: overview
     nav: Overview
     label: 01 · Overview
     title: The layer where owners run the business.
-    lead: "[Context in 3 to 4 lines: what the Admin layer covers, who uses it (owners, managers) and what your role was.]"
+    lead: "The Admin Layer is where restaurant owners and managers run the business across branches: menus, products, promotions and sales. I led its product design, shifting the platform from single-location logic to multi-location management, and reused the Operations design system so both layers feel like one product."
     blocks:
       - type: facts
         items:
@@ -36,26 +36,26 @@ sections:
   - id: problem
     nav: Problem
     label: 02 · Problem
-    title: "[Owners needed one clear view across branches.]"
+    title: "Every change had to be repeated, branch by branch."
     blocks:
       - type: statement
         label: Problem statement
-        text: "[One clear sentence: who struggled, in which moment, and why existing tools failed them.]"
+        text: "Owners with several branches had to repeat every menu, price and promotion change by hand in each location."
       - type: paragraphs
         items:
-          - "[Supporting context: 2 to 3 lines on the situation before Zealix, the tools staff used and where they broke down.]"
+          - "The more branches an owner had, the bigger the bottleneck. They didn’t need a different version of the operations tool. They needed to act on all their branches at once, without losing control of each one."
 
   - id: research
     nav: Research
     label: 03 · Research
     title: What owners and managers needed.
-    lead: "[Methods in one line, e.g. interviews, on-site observation, usability tests. Then the 3 insights that shaped the product.]"
+    lead: "Interviews with owners who manage multiple branches, focused on how they actually run the business day to day."
     blocks:
       - type: cards
         items:
-          - { eyebrow: Insight 01, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
-          - { eyebrow: Insight 02, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
-          - { eyebrow: Insight 03, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
+          - { eyebrow: Insight 01, title: "Repetition grows with every branch", text: "Each action was repeated per location, so more branches meant more manual work." }
+          - { eyebrow: Insight 02, title: "Owners think in two views", text: "They need the whole business at a glance, and one branch in detail when something needs attention." }
+          - { eyebrow: Insight 03, title: "Same platform, different job", text: "Owners didn’t need a new tool. They needed the operations tool adapted to managing." }
 
   - id: decisions
     nav: Key decisions
@@ -66,67 +66,56 @@ sections:
       - type: decisions
         items:
           - eyebrow: Decision 01
-            title: "[Decision title]"
-            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
-            before: { label: Before, tint: false }
-            after: { label: After }
+            title: "Bulk actions across branches"
+            text: "Instead of repeating tasks location by location, owners apply promotions, update products and manage menus across many branches at once, while each branch keeps its own control."
+            after: { label: Decision screen }
           - eyebrow: Decision 02
-            title: "[Decision title]"
-            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
-            before: { label: Before, tint: false }
-            after: { label: After }
+            title: "A consolidated view and a branch view"
+            text: "I structured the information architecture around the two views owners need: everything across branches, and a drill-down into one branch when it needs individual attention."
+            after: { label: Decision screen }
           - eyebrow: Decision 03
-            title: "[Decision title]"
-            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
-            before: { label: Before, tint: false }
-            after: { label: After }
+            title: "One design system, two contexts"
+            text: "I reused Operations Layer components wherever possible, so both products stay consistent while the experience adapts to management."
+            after: { label: Decision screen }
 
   - id: zea
-    nav: Zea · AI concept
-    label: 05 · Zea · AI concept
-    title: "Zea: designing an AI concept for forecasting."
-    lead: "[How Zea surfaces demand predictions from historical sales, and how the UX keeps the owner in control of the final call.]"
+    nav: Zea · AI assistant
+    label: 05 · Zea · AI assistant
+    title: "Zea: AI across the whole platform."
+    lead: "Zea is the AI assistant inside Zealix, present across the whole app. It reads sales data and turns it into ideas, insights and alerts owners can act on."
     blocks:
       - type: cards
         items:
-          - { eyebrow: My role, title: Concept, text: I contributed ideas and UX for Zea. }
-          - { eyebrow: Principle, title: "[Principle]", text: "[e.g. explain why a prediction was made]" }
-          - { eyebrow: Principle, title: "[Principle]", text: "[e.g. owners can review and adjust]" }
-      - { type: media, label: Zea concept screens, height: md }
+          - { eyebrow: My role, title: Ideas and UX, text: I contributed ideas and UX for how Zea shows up across the app. }
+          - { eyebrow: What Zea does, title: Trends into ideas, text: Spots sales trends and suggests promotions or new dishes that help reduce waste. }
+          - { eyebrow: What Zea does, title: Insights and alerts, text: Generates insights and alerts on sales and staff management. }
+      - { type: media, label: Zea screens, height: md }
       - { type: link, label: Back to the Operations Layer, href: /work/zealix-operations }
 
   - id: testing
-    nav: Usability testing
-    label: 06 · Usability testing
+    nav: Validation
+    label: 06 · Validation
     title: Validated with the people who use it.
-    lead: "[Who you tested with and how: number of people, roles, branches. What failed in round 1, what changed, how round 2 went.]"
+    lead: "Validated with owners managing multiple branches."
     blocks:
       - type: rounds
         items:
-          - { label: Round 1, text: "[What users struggled with]" }
-          - { label: What changed, text: "[The design changes you made]" }
-          - { label: Round 2, text: "[How they performed after]" }
-      - type: quotes
-        items:
-          - { quote: "“[Real quote from a cashier after round 2.]”", role: Cashier · Round 2 }
-          - { quote: "“[Real quote from a manager.]”", role: Manager · Round 2 }
-          - { quote: "[Observed moment, e.g. completed an order without asking for help.]", role: Observation }
+          - { label: Time saved, text: "Owners saved time managing the business. How much depends on how many branches they run." }
+          - { label: No more repetition, text: "Bulk actions removed the need to repeat the same task in every branch." }
 
   - id: outcome
     nav: Outcome
     label: 07 · Outcome
     title: What shipped and what changed.
-    lead: "[Final screens and the qualitative results: what got easier for staff, what the team adopted, what shipped.]"
+    lead: "The Admin Layer shipped on web, mobile and tablet: bulk actions for menus, products and promotions, a consolidated view of every branch, and a dashboard for each branch."
     blocks:
       - { type: media, label: "Final screens · web, tablet, mobile", height: lg }
 
   - id: learnings
     nav: Learnings
     label: 08 · Learnings
-    title: What I would do differently.
+    title: What I took from it.
     blocks:
       - type: list
         items:
-          - "[One honest takeaway in a sentence or two.]"
-          - "[One honest takeaway in a sentence or two.]"
-          - "[One honest takeaway in a sentence or two.]"
+          - "Scaling a product isn’t about adding more screens. It’s about rethinking which actions should happen once instead of many times."

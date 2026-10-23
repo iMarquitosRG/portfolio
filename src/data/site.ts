@@ -48,26 +48,26 @@ export const site = {
       items: [
         {
           title: 'Axomy CRM', text: 'Internal CRM, 0 → 1', tint: 'slate',
-          body: '[2 to 3 lines: the problem, what you designed and what changed. A quick look, not a full case study.]',
-          facts: [['Role', 'Product Designer'], ['Year', '[Year]'], ['Tools', 'Figma · [Tools]']],
+          body: 'A complete B2B CRM designed from 0 to 1 for Axomy’s internal client and project management.',
+          facts: [['Role', 'Product Designer'], ['Year', '2025'], ['Tools', 'Figma']],
           link: null, images: [],
         },
         {
           title: 'Activated Decor', text: 'E-commerce redesign', tint: 'sand',
-          body: '[2 to 3 lines: the problem, what you designed and what changed. A quick look, not a full case study.]',
-          facts: [['Role', 'Product Designer'], ['Year', '[Year]'], ['Tools', 'Figma · [Tools]']],
+          body: 'The old store was completely out of date, so I designed a new one from zero and built it in Wix. According to the client, online sales went up after the launch.',
+          facts: [['Role', 'Product Designer'], ['Year', '2025'], ['Tools', 'Figma · Wix']],
           link: null, images: [],
         },
         {
           title: 'Landing pages', text: 'Framer, Figma, Wix', tint: 'slate',
-          body: '[2 to 3 lines: which landing pages, who they were for and what you built.]',
-          facts: [['Role', 'Designer and builder'], ['Year', '[Year]'], ['Tools', 'Framer · Figma · Wix']],
+          body: 'A set of landing pages, some for clients and some as practice. I handled the design on all of them.',
+          facts: [['Role', 'Designer'], ['Type', 'Client and practice'], ['Tools', 'Framer · Figma · Wix']],
           link: null, images: [],
         },
         {
           title: 'zealix.io', text: 'Marketing website', tint: 'brand',
-          body: '[2 to 3 lines: what the site needed to explain and how you designed it.]',
-          facts: [['Role', 'Product Designer'], ['Year', '[Year]'], ['Tools', 'Figma · [Tools]']],
+          body: 'The Zealix marketing site, redesigned several times as the product grew. I designed every version in Figma and another team member built it; the live site is the latest one.',
+          facts: [['Role', 'Product Designer'], ['Years', '2023 to now'], ['Tools', 'Figma']],
           link: 'https://zealix.io', images: [],
         },
       ],
@@ -241,6 +241,8 @@ export const site = {
     image: 'Image',
     of: 'of',
     open: 'Quick view',
+    pause: 'Pause images',
+    play: 'Play images',
   },
 
   notFound: {

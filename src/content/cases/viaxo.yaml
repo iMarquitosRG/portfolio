@@ -12,8 +12,8 @@ card:
   highlight: ~40% less admin time
 tldr:
   role: Product Designer
-  timeline: "[Year]"
-  platforms: "[Platforms]"
+  timeline: "2025"
+  platforms: "Web · Mobile · Tablet"
   outcome: ~40% less admin time
 next: zealix-operations
 nextSummary: Restaurant POS for frontline staff.
@@ -24,7 +24,7 @@ sections:
     nav: Overview
     label: 01 · Overview
     title: One app to run a travel agency.
-    lead: "[Context in 3 to 4 lines: the agency, who uses the app day to day, and what your role was.]"
+    lead: "Viaxo is a management app for a travel agency: clients, itineraries, reservations and payments in one place. I led the UX/UI end to end, from interviews with the team to an app that works on web, mobile and tablet."
     blocks:
       - type: facts
         items:
@@ -36,26 +36,26 @@ sections:
   - id: problem
     nav: Problem
     label: 02 · Problem
-    title: "[Payments and client records lived in too many places.]"
+    title: "The agency ran on spreadsheets and an outdated tool."
     blocks:
       - type: statement
         label: Problem statement
-        text: "[One clear sentence: who struggled, in which moment, and why existing tools failed them.]"
+        text: "Creating a simple client record took far too long, and the team couldn’t work from a phone when it mattered."
       - type: paragraphs
         items:
-          - "[Supporting context: what the agency used before (spreadsheets, chats, paper) and where it broke down.]"
+          - "Work was split between Excel spreadsheets and an internal tool with no mobile or tablet support. The client described it as an airplane cockpit: cluttered inputs and buttons, no flow to guide the process, and missing features the agency needed every day."
 
   - id: research
     nav: Research
     label: 03 · Research
     title: What the agency team needed.
-    lead: "[Methods in one line, e.g. interviews, on-site observation, usability tests. Then the 3 insights that shaped the product.]"
+    lead: "Interviews with the client and observation of how the team actually worked."
     blocks:
       - type: cards
         items:
-          - { eyebrow: Insight 01, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
-          - { eyebrow: Insight 02, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
-          - { eyebrow: Insight 03, title: "[Insight title]", text: "[One line on what you observed and why it mattered.]" }
+          - { eyebrow: Insight 01, title: "Too many inputs, no guidance", text: "One overloaded form per task made every record slow to create." }
+          - { eyebrow: Insight 02, title: "Urgent moments happen away from the desk", text: "Agents needed to answer clients from a phone, and the old tool only worked on desktop." }
+          - { eyebrow: Insight 03, title: "Restructure, don’t add", text: "The agency didn’t need more features. It needed a process people could follow." }
 
   - id: decisions
     nav: Key decisions
@@ -66,32 +66,29 @@ sections:
       - type: decisions
         items:
           - eyebrow: Decision 01
-            title: "[Decision title]"
-            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
-            before: { label: Before, tint: false }
-            after: { label: After }
+            title: "Guided, multi-step flows"
+            text: "I replaced single overloaded forms with guided, multi-step flows for itineraries and reservations, so agents always know the next step."
+            after: { label: Decision screen }
           - eyebrow: Decision 02
-            title: "[Decision title]"
-            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
-            before: { label: Before, tint: false }
-            after: { label: After }
+            title: "Client records that are quick to update"
+            text: "I redesigned client management so records are easy to create and update, and rethought how the team organizes and splits its daily work."
+            after: { label: Decision screen }
           - eyebrow: Decision 03
-            title: "[Decision title]"
-            text: "[Problem → options considered → what you chose and why. Keep it to 3 or 4 lines.]"
-            before: { label: Before, tint: false }
-            after: { label: After }
+            title: "Built to work from anywhere"
+            text: "I designed the whole app for web, mobile and tablet, so agents can handle urgent requests on the go, the biggest gap of the old tool."
+            after: { label: Decision screen }
 
   - id: core-flows
     nav: Core flows
     label: 05 · Core flows
     title: Designing the core flows.
-    lead: "[The main flows: client records, bookings and payments, and how they connect.]"
+    lead: "Client records, itineraries and reservations, and payments, connected in one app."
     blocks:
       - type: cards
         items:
-          - { eyebrow: Flow 01, title: "[Client records]", text: "[What it solves in one line.]" }
-          - { eyebrow: Flow 02, title: "[Bookings]", text: "[What it solves in one line.]" }
-          - { eyebrow: Flow 03, title: "[Payments]", text: "[What it solves in one line.]" }
+          - { eyebrow: Flow 01, title: "Client records", text: "Create and update a client in a few steps." }
+          - { eyebrow: Flow 02, title: "Itineraries and reservations", text: "A guided flow instead of one long form." }
+          - { eyebrow: Flow 03, title: "Payments and deposits", text: "Payments and deposits managed in one place." }
       - { type: media, label: Core flows, height: md }
       - { type: link, label: View all work, href: "/#work" }
 
@@ -99,34 +96,27 @@ sections:
     nav: Validation
     label: 06 · Validation
     title: Checked with the agency team.
-    lead: "[Who you tested with and how: number of people, roles, branches. What failed in round 1, what changed, how round 2 went.]"
+    lead: "The agency team moved to the new app and used it from day one."
     blocks:
       - type: rounds
         items:
-          - { label: Round 1, text: "[What users struggled with]" }
-          - { label: What changed, text: "[The design changes you made]" }
-          - { label: Round 2, text: "[How they performed after]" }
-      - type: quotes
-        items:
-          - { quote: "“[Real quote from the agency team.]”", role: Agency team }
-          - { quote: "“[Real quote from the owner.]”", role: Owner }
-          - { quote: "[Observed moment, e.g. completed an order without asking for help.]", role: Observation }
+          - { label: No adoption issues, text: "The client had no issues adapting to the new system." }
+          - { label: About 40% faster, text: "Payments, deposits and client admin became about 40% faster than before." }
+          - { label: Confident from day one, text: "A guided process replaced what used to feel overwhelming." }
 
   - id: outcome
     nav: Outcome
     label: 07 · Outcome
     title: What shipped and what changed.
-    lead: "Payment and client admin time dropped by about 40%. [Add how it was measured and what the team said.]"
+    lead: "Payments, deposits and client admin became about 40% faster, on web, mobile and tablet."
     blocks:
       - { type: media, label: "Final screens · web, tablet, mobile", height: lg }
 
   - id: learnings
     nav: Learnings
     label: 08 · Learnings
-    title: What I would do differently.
+    title: What I took from it.
     blocks:
       - type: list
         items:
-          - "[One honest takeaway in a sentence or two.]"
-          - "[One honest takeaway in a sentence or two.]"
-          - "[One honest takeaway in a sentence or two.]"
+          - "Good design isn’t about adding capability. It’s about removing the friction that keeps people from using what’s already there."

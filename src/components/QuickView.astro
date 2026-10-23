@@ -41,7 +41,12 @@ const q = site.quickView;
       <Icon name="arrow-right" size={18} />
     </button>
     <p class="t-label qv__img-label" aria-live="polite" data-qv-img-label></p>
-    <div class="qv__dots" data-qv-dots></div>
+    <div class="qv__player">
+      <button class="qv__pause" type="button" aria-label={q.pause} data-qv-pause>
+        <Icon name="pause" size={12} class="i-pause" /><Icon name="play" size={12} class="i-play" />
+      </button>
+      <div class="qv__dots" data-qv-dots></div>
+    </div>
   </div>
 
   <div class="qv__body">

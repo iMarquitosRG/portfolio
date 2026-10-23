@@ -22,7 +22,22 @@ function setup(dlg: HTMLDialogElement) {
   const track = $('[data-qv-track]'), dots = $('[data-qv-dots]'), imgLabel = $('[data-qv-img-label]');
   const link = $<HTMLAnchorElement>('[data-qv-link]');
   const media = $('[data-qv-media]');
+  const pauseBtn = $<HTMLButtonElement>('[data-qv-pause]');
   let index = 0, slides = 0, current = 0, trigger: HTMLElement | null = null;
+  // Autoplay, same rhythm as the hero slider: 5s per image, pauses on hover/focus/touch,
+  // pause button (WCAG 2.2.2), never with Reduce motion.
+  const DELAY = 5000;
+  let timer: number | undefined, userPaused = false, holding = false;
+  const playing = () => dlg.open && !userPaused && !holding && slides > 1 && !reduce();
+  const restartTick = () => { media.classList.remove('is-ticking'); void media.offsetWidth; if (playing()) media.classList.add('is-ticking'); };
+  const schedule = () => {
+    window.clearTimeout(timer);
+    media.classList.toggle('is-paused', !playing());
+    if (playing()) {
+      restartTick();
+      timer = window.setTimeout(() => goSlide((current + 1) % slides, true), DELAY);
+    } else media.classList.remove('is-ticking');
+  };
 
   const render = (i: number) => {
     index = (i + items.length) % items.length;
@@ -45,21 +60,26 @@ function setup(dlg: HTMLDialogElement) {
         ${img ? `<img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy" decoding="async">` : '<div class="mock qv__mock"></div>'}
       </figure>`).join('');
     dots.innerHTML = imgs.map((_, n) =>
-      `<button type="button" class="qv__dot" aria-label="${t.goToImage} ${n + 1}" data-qv-dot="${n}"></button>`).join('');
+      `<button type="button" class="qv__dot" aria-label="${t.goToImage} ${n + 1}" data-qv-dot="${n}"><span></span></button>`).join('');
     media.classList.toggle('is-single', slides < 2);
     track.scrollLeft = 0;
+    current = -1;
     setSlide(0);
   };
 
   const setSlide = (n: number) => {
-    current = Math.max(0, Math.min(slides - 1, n));
+    const next = Math.max(0, Math.min(slides - 1, n));
+    if (next === current) return;
+    current = next;
     imgLabel.textContent = `${t.image} ${current + 1} ${t.of} ${slides}`;
     dots.querySelectorAll('.qv__dot').forEach((d, k) => d.setAttribute('aria-current', String(k === current)));
     dlg.querySelector<HTMLButtonElement>('[data-qv-img="-1"]')!.disabled = current === 0;
     dlg.querySelector<HTMLButtonElement>('[data-qv-img="1"]')!.disabled = current === slides - 1;
+    schedule();
   };
-  const goSlide = (n: number) => {
+  const goSlide = (n: number, auto = false) => {
     const target = Math.max(0, Math.min(slides - 1, n));
+    if (!auto) schedule();
     track.scrollTo({ left: target * track.clientWidth, behavior: reduce() ? 'auto' : 'smooth' });
     setSlide(target);
   };
@@ -76,11 +96,27 @@ function setup(dlg: HTMLDialogElement) {
     reset(dlg);
     dlg.showModal();
     root.classList.add('qv-open');
+    schedule();
     $('[data-qv-title]').focus({ preventScroll: true });
   };
   const close = () => { if (dlg.open) dlg.close(); };
 
+  pauseBtn.addEventListener('click', () => {
+    userPaused = !userPaused;
+    pauseBtn.setAttribute('aria-label', userPaused ? t.play : t.pause);
+    schedule();
+  });
+  // Hold while the person is looking at or touching the images.
+  media.addEventListener('pointerenter', () => { holding = true; schedule(); });
+  media.addEventListener('pointerleave', () => { holding = false; schedule(); });
+  media.addEventListener('focusin', () => { holding = true; schedule(); });
+  media.addEventListener('focusout', (e) => { if (!media.contains(e.relatedTarget as Node)) { holding = false; schedule(); } });
+  window.addEventListener('prefs:change', schedule);
+
   dlg.addEventListener('close', () => {
+    window.clearTimeout(timer);
+    holding = false;
+    media.classList.remove('is-ticking');
     root.classList.remove('qv-open');
     reset(dlg);
     // Return focus to the card that opened it.

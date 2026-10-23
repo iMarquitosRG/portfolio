@@ -393,7 +393,8 @@
 .case-card__text { display: grid; gap: 16px; align-content: center; padding: 0 8px; }
 .case-card__text > p { max-width: 460px; }
 .case-card__link { justify-self: start; margin-top: 4px; }
-.case-card__link::before { content: ''; position: absolute; inset: 0; border-radius: inherit; z-index: 1; } /* whole card is the link */
+.case-card__link { position: static; } /* so the overlay below covers the whole card, arrow included */
+.case-card__link::before { content: ''; position: absolute; inset: 0; border-radius: var(--r-hero); z-index: 2; } /* whole card is the link */
 .case-card { border-radius: var(--r-hero); }
 .case-card:has(.case-card__link:focus-visible) { outline: 2px solid var(--focus); outline-offset: 3px; }
 .case-card__link:focus-visible { outline: none; }
@@ -703,6 +704,13 @@
 .notfound { min-height: calc(100svh - 2 * var(--inset)); display: grid; align-content: end; gap: 20px; padding: 120px clamp(20px, 3.9vw, 56px) clamp(24px, 3.9vw, 56px); }
 .notfound__word { position: absolute; z-index: -1; top: 80px; left: -0.04em; font-size: clamp(10rem, 40vw, 32rem); }
 .notfound__word .bigword { font-size: inherit; }
+
+/* Gradient frames: outline drawn as an outer ring + top highlight, visible on any gradient */
+.frame, .contact, .next-case, .case-card__cover, .other__thumb, .built__thumb {
+  border-color: transparent;
+  box-shadow: 0 0 0 1px var(--ring), inset 0 1px 0 0 var(--ring-highlight);
+}
+.case-card__cover, .other__thumb, .built__thumb { border: 0; }
 
 /* Split lines (GSAP) */
 .split-line { padding-bottom: 0.06em; }

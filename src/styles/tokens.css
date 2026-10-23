@@ -123,6 +123,10 @@
 
   --portrait-darken: 0.28;
   --portrait-fade: 0.85;
+
+  /* Outline of gradient frames: drawn outside, against the page, so it shows on every side */
+  --ring: rgba(255, 255, 255, 0.14);
+  --ring-highlight: rgba(255, 255, 255, 0.12);
 }
 
 /* ---------- Theme · Light ---------- */
@@ -171,6 +175,9 @@
 
   --portrait-darken: 0.06;
   --portrait-fade: 0.5;
+
+  --ring: rgba(0, 0, 0, 0.1);
+  --ring-highlight: rgba(255, 255, 255, 0.7);
 }
 
 /* ---------- Theme · High Contrast (dark) ---------- */
@@ -201,6 +208,8 @@
   --bw-soft-b: rgba(255, 255, 255, 0);
   --bw-a: rgba(255, 255, 255, 0.2);
   --bw-b: rgba(255, 255, 255, 0);
+  --ring: rgba(255, 255, 255, 0.5);
+  --ring-highlight: transparent;
 }
 
 /* ---------- Theme · High Contrast (light) ---------- */
@@ -228,6 +237,7 @@
   --bw-a: rgba(0, 0, 0, 0.14);
   --bw-b: rgba(0, 0, 0, 0);
   --mock-border: rgba(0, 0, 0, 0.5);
+  --ring: rgba(0, 0, 0, 0.6);
 }
 
 /* ---------- Material · Solid (Reduce transparency) ---------- */

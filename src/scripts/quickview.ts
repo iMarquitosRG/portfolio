@@ -24,11 +24,11 @@ function setup(dlg: HTMLDialogElement) {
   const media = $('[data-qv-media]');
   const pauseBtn = $<HTMLButtonElement>('[data-qv-pause]');
   let index = 0, slides = 0, current = 0, trigger: HTMLElement | null = null;
-  // Autoplay, same rhythm as the hero slider: 5s per image, pauses on hover/focus/touch,
+  // Autoplay, same rhythm as the hero slider: 5s per image, paused only with the
   // pause button (WCAG 2.2.2), never with Reduce motion.
   const DELAY = 5000;
-  let timer: number | undefined, userPaused = false, holding = false;
-  const playing = () => dlg.open && !userPaused && !holding && slides > 1 && !reduce();
+  let timer: number | undefined, userPaused = false;
+  const playing = () => dlg.open && !userPaused && slides > 1 && !reduce();
   const restartTick = () => { media.classList.remove('is-ticking'); void media.offsetWidth; if (playing()) media.classList.add('is-ticking'); };
   const schedule = () => {
     window.clearTimeout(timer);
@@ -109,16 +109,10 @@ function setup(dlg: HTMLDialogElement) {
     pauseBtn.setAttribute('aria-label', userPaused ? t.play : t.pause);
     schedule();
   });
-  // Hold while the person is looking at or touching the images.
-  media.addEventListener('pointerenter', () => { holding = true; schedule(); });
-  media.addEventListener('pointerleave', () => { holding = false; schedule(); });
-  media.addEventListener('focusin', () => { holding = true; schedule(); });
-  media.addEventListener('focusout', (e) => { if (!media.contains(e.relatedTarget as Node)) { holding = false; schedule(); } });
   window.addEventListener('prefs:change', schedule);
 
   dlg.addEventListener('close', () => {
     window.clearTimeout(timer);
-    holding = false;
     media.classList.remove('is-ticking');
     root.classList.remove('qv-open');
     reset(dlg);

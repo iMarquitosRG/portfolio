@@ -1,4 +1,4 @@
-/** Hero slider (desktop): 5s autoplay, pauses on hover/focus, pause button (WCAG 2.2.2), no autoplay with Reduce motion. */
+/** Hero slider (desktop): 5s autoplay, paused only with the pause button (WCAG 2.2.2), no autoplay with Reduce motion. */
 export function initSlider() {
   const el = document.querySelector<HTMLElement>('[data-slider]');
   if (!el) return;
@@ -10,7 +10,6 @@ export function initSlider() {
   let i = 0;
   let timer: number | undefined;
   let userPaused = false;
-  let hovering = false;
 
   const show = (n: number) => {
     i = (n + slides.length) % slides.length;
@@ -25,7 +24,7 @@ export function initSlider() {
     if (playing()) el.classList.add('is-ticking');
   };
   const visible = () => el.offsetParent !== null;
-  const playing = () => !userPaused && !hovering && root.dataset.motion === 'full' && visible();
+  const playing = () => !userPaused && root.dataset.motion === 'full' && visible();
   const schedule = () => {
     window.clearTimeout(timer);
     el.classList.toggle('is-paused', !playing());
@@ -40,10 +39,6 @@ export function initSlider() {
     pauseBtn.setAttribute('aria-label', userPaused ? 'Play slideshow' : 'Pause slideshow');
     schedule();
   });
-  el.addEventListener('pointerenter', () => { hovering = true; schedule(); });
-  el.addEventListener('pointerleave', () => { hovering = false; schedule(); });
-  el.addEventListener('focusin', () => { hovering = true; schedule(); });
-  el.addEventListener('focusout', (e) => { if (!el.contains(e.relatedTarget as Node)) { hovering = false; schedule(); } });
   window.addEventListener('prefs:change', schedule);
   window.addEventListener('resize', schedule, { passive: true });
   show(0);

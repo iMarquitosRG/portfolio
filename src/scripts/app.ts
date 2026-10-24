@@ -30,3 +30,21 @@ loadMotion();
 window.addEventListener('prefs:change', () => {
   if (root.dataset.motion === 'full') loadMotion();
 });
+
+// Links like /about#built: land exactly on the section. Smooth scroll on <html> plus late layout
+// (fonts, images, text reveals) can leave Safari at the top of the page, so jump instantly and
+// re-check once the page has settled.
+function jumpToHash() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const target = id && document.getElementById(id);
+  if (!target) return;
+  root.style.scrollBehavior = 'auto';
+  target.scrollIntoView({ block: 'start' });
+  requestAnimationFrame(() => { root.style.scrollBehavior = ''; });
+}
+if (location.hash) {
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  jumpToHash();
+  window.addEventListener('load', () => { jumpToHash(); setTimeout(jumpToHash, 400); }, { once: true });
+  document.fonts?.ready.then(jumpToHash);
+}

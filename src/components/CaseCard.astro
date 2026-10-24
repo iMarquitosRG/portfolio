@@ -12,7 +12,7 @@ const href = `/work/${entry.id}`;
 <article class={`case-card surface tint-${d.tint}`} data-reveal>
   <div class="case-card__cover grad" style={`view-transition-name: cover-${entry.id}`}>
     <div class="case-card__word" aria-hidden="true"><span class="bigword">{d.bigWord}</span></div>
-    <Mockups class="case-card__mockups" parallax={-6} />
+    <Mockups class="case-card__mockups" parallax={-6} images={d.mockups} />
     <a class="case-card__open btn btn--icon glass" href={href} tabindex="-1" aria-hidden="true"><Icon name="arrow-right" size={18} /></a>
   </div>
   <div class="case-card__text">

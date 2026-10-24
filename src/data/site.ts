@@ -13,9 +13,9 @@ export const site = {
   status: 'Open to full-time roles',
 
   seo: {
-    title: 'Marcos Rivera · Product & UX/UI Designer for B2B SaaS and Vertical AI',
+    title: 'Marcos Rivera · Product & UX/UI Designer · B2B SaaS, AI and complex products',
     description:
-      'Product and UX/UI Designer from Mexico. Research, design systems and shipped UI for B2B SaaS and AI products. Open to full-time remote roles.',
+      'Product and UX/UI Designer from Mexico. Research, design systems and shipped UI for B2B SaaS, AI and other complex products. Open to full-time remote roles.',
   },
 
   nav: [
@@ -27,7 +27,7 @@ export const site = {
 
   home: {
     words: ['PRODUCT', 'DESIGNER'],
-    headline: 'I design calm, precise tools for B2B SaaS and Vertical AI teams.',
+    headline: 'I design calm, precise tools for complex products, from B2B SaaS to AI.',
     sub: 'Product Designer · UX/UI Design · UX Research · Design Systems · Based in Mexico, working remote',
     ctaWork: 'View work',
     scrollHint: 'Scroll to explore',
@@ -50,25 +50,40 @@ export const site = {
           title: 'Axomy CRM', text: 'Internal CRM, 0 → 1', tint: 'slate',
           body: 'A complete B2B CRM designed from 0 to 1 for Axomy’s internal client and project management.',
           facts: [['Role', 'Product Designer'], ['Year', '2025'], ['Tools', 'Figma']],
-          link: null, images: [],
+          link: null, images: [
+            { src: '/work/other/axomy-permissions.webp', alt: 'Axomy CRM team and permissions page: a sidebar with brands and projects, and a table of members with role, brands, tags and last access' },
+            { src: '/work/other/axomy-team.webp', alt: 'Close-up of the Axomy team table: each member with status, role badge, linked brands and tags' },
+          ],
         },
         {
           title: 'Activated Decor', text: 'E-commerce redesign', tint: 'sand',
           body: 'The old store was completely out of date, so I designed a new one from zero and built it in Wix. According to the client, online sales went up after the launch.',
           facts: [['Role', 'Product Designer'], ['Year', '2025'], ['Tools', 'Figma · Wix']],
-          link: null, images: [],
+          link: null, images: [
+            { src: '/work/other/activated-home.webp', alt: 'Activated Decor home page: a dark living room hero about TV lift technology with a Get a Free Quote button' },
+            { src: '/work/other/activated-reviews.webp', alt: 'Reviews page with a gallery of real client projects, like a TV lift inside an RV bedroom' },
+            { src: '/work/other/activated-partner.webp', alt: 'Become a Trade Partner page with the program benefits next to a contact form' },
+          ],
         },
         {
           title: 'Landing pages', text: 'Framer, Figma, Wix', tint: 'slate',
           body: 'A set of landing pages, some for clients and some as practice. I handled the design on all of them.',
           facts: [['Role', 'Designer'], ['Type', 'Client and practice'], ['Tools', 'Framer · Figma · Wix']],
-          link: null, images: [],
+          link: null, images: [
+            { src: '/work/other/nerdheart-hero.webp', alt: 'NerdHeart landing hero: Organiza tu mundo, potencia tus ideas, with a hand-drawn heart mascot pouring coffee' },
+            { src: '/work/other/beautylab-hero.webp', alt: 'Beauty Lab landing hero: Descubre tu belleza natural, with two serum bottles and floating product and rating cards' },
+            { src: '/work/other/nerdheart-pain.webp', alt: 'NerdHeart section of colorful tilted cards listing the pain points of a messy digital life' },
+            { src: '/work/other/beautylab-shop.webp', alt: 'Beauty Lab shop: category filters above a grid of product cards with price, wishlist and cart buttons' },
+          ],
         },
         {
           title: 'zealix.io', text: 'Marketing website', tint: 'brand',
           body: 'The Zealix marketing site, redesigned several times as the product grew. I designed every version in Figma and another team member built it; the live site is the latest one.',
           facts: [['Role', 'Product Designer'], ['Years', '2023 to now'], ['Tools', 'Figma']],
-          link: 'https://zealix.io', images: [],
+          link: 'https://zealix.io', images: [
+            { src: '/work/other/zealix-home-dark.webp', srcLight: '/work/other/zealix-home-light.webp', alt: 'zealix.io home: Control your business. Get your time back, with demo and download buttons above a product preview' },
+            { src: '/work/other/zealix-download-dark.webp', srcLight: '/work/other/zealix-download-light.webp', alt: 'zealix.io download page for the Windows app, with macOS coming soon' },
+          ],
         },
       ],
     },
@@ -161,30 +176,30 @@ export const site = {
         {
           n: '01', title: 'Lo-fi', tint: 'slate',
           text: 'Grayscale wireframes for every page and breakpoint.',
-          body: '[2 to 3 lines: what this step produced and how it fed the next one.]',
-          facts: [['Step', '01 of 04'], ['Tool', 'Figma'], ['Output', '[Pages and breakpoints]']],
-          link: null, images: [],
+          body: 'Every page in grayscale for desktop, tablet and mobile, including the accessibility panel and the quick view. Layout and content were settled before any color.',
+          facts: [['Step', '01 of 04'], ['Tool', 'Figma'], ['Output', 'Every page, 3 breakpoints']],
+          link: null, images: [{ src: '/work/built/lofi-home.webp', alt: 'Grayscale wireframe of the home page on desktop' }, { src: '/work/built/lofi-mobile.webp', alt: 'Grayscale wireframes of the home, case study and about pages on mobile' }, { src: '/work/built/lofi-a11y.webp', alt: 'Wireframes of the accessibility panel as a desktop popover, tablet popover and mobile bottom sheet' }],
         },
         {
           n: '02', title: 'Tokens + modes', tint: 'brand',
           text: 'Every accessibility setting is a variable mode.',
-          body: '[2 to 3 lines: what this step produced and how it fed the next one.]',
-          facts: [['Step', '02 of 04'], ['Tool', 'Figma variables'], ['Output', '[4 collections, 9 modes]']],
-          link: null, images: [],
+          body: 'Theme, Material and Responsive collections in Figma. Each accessibility setting is a mode, so the same components switch theme, glass or contrast without being redrawn.',
+          facts: [['Step', '02 of 04'], ['Tool', 'Figma variables'], ['Output', '4 collections, 9 modes']],
+          link: null, images: [{ src: '/work/built/tokens-modes.webp', alt: 'The same hero in dark with glass, light, reduced transparency and high contrast' }, { src: '/work/built/tokens-variables.webp', alt: 'Figma Theme variables with Dark, Light and High Contrast modes mapped to neutral primitives' }, { src: '/work/built/tokens-a11y.webp', alt: 'The accessibility panel in dark and light themes' }],
         },
         {
           n: '03', title: 'Hi-fi', tint: 'purple',
           text: 'Glass, type and motion on top of the system.',
-          body: '[2 to 3 lines: what this step produced and how it fed the next one.]',
-          facts: [['Step', '03 of 04'], ['Tool', 'Figma'], ['Output', '[Screens, components, states]']],
-          link: null, images: [],
+          body: 'Glass, the big background type and motion on top of the tokens, for every page and breakpoint, in dark and light.',
+          facts: [['Step', '03 of 04'], ['Tool', 'Figma'], ['Output', 'Screens, components, states']],
+          link: null, images: [{ src: '/work/built/hifi-home-dark.webp', alt: 'High fidelity home page in dark theme' }, { src: '/work/built/hifi-home-light.webp', alt: 'High fidelity home page in light theme' }, { src: '/work/built/hifi-mobile.webp', alt: 'High fidelity mobile screens: home, case study and about' }],
         },
         {
           n: '04', title: 'Code', tint: 'sand',
           text: 'Astro and GSAP, with tokens mapped 1:1 from Figma.',
-          body: '[2 to 3 lines: what this step produced and how it fed the next one.]',
-          facts: [['Step', '04 of 04'], ['Tool', 'Astro · GSAP'], ['Output', '[This site]']],
-          link: null, images: [],
+          body: 'Built with Astro and GSAP, with the CSS tokens copied 1:1 from the Figma variables and deployed on Cloudflare. Lighthouse on mobile: 99, 100, 100, 100.',
+          facts: [['Step', '04 of 04'], ['Tool', 'Astro · GSAP'], ['Output', 'This site']],
+          link: null, images: [{ src: '/work/built/code-live.webp', alt: 'The live site on desktop and mobile' }, { src: '/work/built/code-tokens.webp', alt: 'CSS where every Figma variable mode is an attribute on the html element' }, { src: '/work/built/code-lighthouse.webp', alt: 'Lighthouse mobile scores: 99 performance, 100 accessibility, 100 best practices, 100 SEO' }],
         },
       ],
     },
@@ -192,7 +207,7 @@ export const site = {
 
   contact: {
     headline: 'Looking for my next full-time Product Design or UX/UI role.',
-    sub: 'B2B SaaS and Vertical AI teams. Remote, or ready to relocate.',
+    sub: 'Strongest in B2B SaaS and AI, open to any team building products people rely on. Remote, or ready to relocate.',
     compactHeadline: 'Like this case? Let’s talk about your team.',
     email: 'Email me',
     meta: [

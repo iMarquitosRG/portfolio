@@ -13,7 +13,7 @@ export interface QVItem {
   body: string;
   facts: readonly (readonly [string, string])[];
   link: string | null;
-  images: readonly { src: string; alt: string }[];
+  images: readonly { src: string; alt: string; srcLight?: string }[];
   tint: string;
 }
 interface Props { id: string; label: string; items: QVItem[] }

@@ -18,6 +18,7 @@ tldr:
 next: viaxo
 nextSummary: Travel agency management app with about 40% less admin time.
 seoDescription: How I designed finance and multibranch management for restaurant owners, and the UX of Zea, an AI assistant that turns sales trends into ideas.
+mockups: { screen: admin-mock-screen.webp, phone: admin-mock-phone.webp, screenLight: admin-mock-screen-light.webp, phoneLight: admin-mock-phone-light.webp }
 
 sections:
   - id: overview
@@ -31,7 +32,7 @@ sections:
           - { value: "2", label: Products in the Zealix platform }
           - { value: "3", label: "Platforms: web, mobile, tablet" }
           - { value: "0 → 1", label: From first research to QA }
-      - { type: media, label: "Ecosystem diagram · Operations + Admin", height: md }
+      - { type: media, label: "Ecosystem diagram · Operations + Admin", src: admin-overview-dark.png, srcLight: admin-overview-light.png, alt: "Zealix as one platform with two layers. Admin Layer, highlighted: business management across branches, used by owners and managers. Operations Layer: the POS for daily service. Zea and one design system run across both, on web, tablet and mobile.", height: md }
 
   - id: problem
     nav: Problem
@@ -68,15 +69,15 @@ sections:
           - eyebrow: Decision 01
             title: "Bulk actions across branches"
             text: "Instead of repeating tasks location by location, owners apply promotions, update products and manage menus across many branches at once, while each branch keeps its own control."
-            after: { label: Decision screen }
+            after: { label: Decision screen, src: admin-products.webp, srcLight: admin-products-light.webp, alt: "Products table shared across branches: each dish shows its price, how many branches it reaches, its status and an on or off toggle." }
           - eyebrow: Decision 02
             title: "A consolidated view and a branch view"
             text: "I structured the information architecture around the two views owners need: everything across branches, and a drill-down into one branch when it needs individual attention."
-            after: { label: Decision screen }
+            after: { label: Decision screen, src: admin-branches.webp, srcLight: admin-branches-light.webp, alt: "All branches as cards with plan, address, phone, sales today and status, with a switch between grid and list views." }
           - eyebrow: Decision 03
             title: "One design system, two contexts"
             text: "I reused Operations Layer components wherever possible, so both products stay consistent while the experience adapts to management."
-            after: { label: Decision screen }
+            after: { label: Decision screen, src: admin-menus.webp, srcLight: admin-menus-light.webp, alt: "Menus table built with the same table component: content, reach across branches, schedule and status for each menu." }
 
   - id: zea
     nav: Zea · AI assistant
@@ -89,14 +90,17 @@ sections:
           - { eyebrow: My role, title: Ideas and UX, text: I contributed ideas and UX for how Zea shows up across the app. }
           - { eyebrow: What Zea does, title: Trends into ideas, text: Spots sales trends and suggests promotions or new dishes that help reduce waste. }
           - { eyebrow: What Zea does, title: Insights and alerts, text: Generates insights and alerts on sales and staff management. }
-      - { type: media, label: Zea screens, height: md }
+      - type: gallery
+        items:
+          - { label: Zea answers with a table, src: admin-zea-table-dark.webp, srcLight: admin-zea-table-light.webp, alt: "Zea chat: asked for the current drinks inventory, Zea answers with a table of items below minimum stock and suggests next actions.", height: md }
+          - { label: Zea generates a report, src: admin-zea-report-dark.webp, srcLight: admin-zea-report-light.webp, alt: "Zea chat: asked for last month's sales report, Zea summarizes the top categories, attaches a PDF and offers to email it or schedule it monthly.", height: md }
       - { type: link, label: Back to the Operations Layer, href: /work/zealix-operations }
 
   - id: testing
     nav: Validation
     label: 06 · Validation
     title: Validated with the people who use it.
-    lead: "Validated with owners managing multiple branches."
+    lead: "Validated with owners managing multiple branches, as part of the same tests across about 4 restaurants."
     blocks:
       - type: rounds
         items:
@@ -109,7 +113,7 @@ sections:
     title: What shipped and what changed.
     lead: "The Admin Layer shipped on web, mobile and tablet: bulk actions for menus, products and promotions, a consolidated view of every branch, and a dashboard for each branch."
     blocks:
-      - { type: media, label: "Final screens · web, tablet, mobile", height: lg }
+      - { type: media, label: "Final screens · web, tablet, mobile", src: admin-final.webp, backdrop: true, srcLight: admin-final-light.webp, alt: "Menus in the Admin Layer on web, tablet and mobile, in dark mode.", height: lg }
 
   - id: learnings
     nav: Learnings

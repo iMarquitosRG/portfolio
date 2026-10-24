@@ -18,6 +18,7 @@ tldr:
 next: zealix-admin
 nextSummary: Finance and multibranch management for restaurant owners.
 seoDescription: How I designed a restaurant POS for frontline staff from 0 to 1, across web, mobile and tablet, and validated it with real staff.
+mockups: { screen: ops-mock-screen.webp, phone: ops-mock-phone.webp, screenLight: ops-mock-screen-light.webp, phoneLight: ops-mock-phone-light.webp }
 
 sections:
   - id: overview
@@ -31,7 +32,7 @@ sections:
           - { value: "2", label: Products in the Zealix platform }
           - { value: "3", label: "Platforms: web, mobile, tablet" }
           - { value: "0 → 1", label: From first research to QA }
-      - { type: media, label: "Ecosystem diagram · Operations + Admin", height: md }
+      - { type: media, label: "Ecosystem diagram · Operations + Admin", src: ops-overview-dark.png, srcLight: ops-overview-light.png, alt: "Zealix as one platform with two layers. Operations Layer, highlighted: the POS for daily service, used by waiters, cashiers and kitchen. Admin Layer: business management across branches. Zea and one design system run across both, on web, tablet and mobile.", height: md }
 
   - id: problem
     nav: Problem
@@ -68,15 +69,16 @@ sections:
           - eyebrow: Decision 01
             title: "Inventory linked to every dish"
             text: "Stock was a manual task that always fell behind. I linked inventory to each dish, so every order updates stock automatically inside the ordering flow, with no extra step for staff."
-            after: { label: Decision screen }
+            after: { label: Decision screen, src: ops-inventory-dark.webp, srcLight: ops-inventory-light.webp, alt: "Inventory dashboard: total items, categories, items at preventive and critical levels, inventory movements over time and Zea updates on savings, consumption peaks and stock without movement." }
           - eyebrow: Decision 02
             title: "A fast mode for peak hours"
             text: "Complete flows slowed staff down when the restaurant was full. I designed a dedicated fast mode that favors speed over completeness at peak hours, while the full flow stays one tap away."
-            after: { label: Decision screen }
+            before: { label: Regular mode, src: ops-order-dark.webp, srcLight: ops-order-light.webp, alt: "Regular order taking: search, diner selector and menu tabs above the dish list, next to an empty current order." }
+            after: { label: Fast mode, src: ops-fast-mode-dark.webp, srcLight: ops-fast-mode-light.webp, alt: "Fast mode for peak hours: the most ordered dishes sit in a row of large photo cards on top, one tap to add them, next to the current order." }
           - eyebrow: Decision 03
             title: "AI trend prediction to plan ahead"
             text: "Owners planned stock and menus by gut feeling. I proposed and designed the UX for a trend prediction feature that uses historical sales to show which dishes are likely to sell. Engineering built it."
-            after: { label: Decision screen }
+            after: { label: Decision screen, src: ops-prediction-dark.webp, srcLight: ops-prediction-light.webp, alt: "Consumption prediction: projected demand over the year, a Zea note expecting 30% more meat this weekend, usage by category, inventory suggestions and detected anomalies." }
 
   - id: design-system
     nav: Design system
@@ -89,14 +91,14 @@ sections:
           - { value: "4", label: "Theme modes: POS and Capa Cero, light and dark" }
           - { value: "2", label: Products running on one system }
           - { value: "3", label: Platforms from the same components }
-      - { type: media, label: "Tokens, modes and components", height: md }
+      - { type: media, label: "Tokens, modes and components", src: ops-design-system.png, alt: "Zealix alias variables in Figma: one collection with four modes, Capa Cero, Capa Cero Dark, POS and POS Dark, so Admin and Operations share every token in light and dark.", height: md }
       - { type: link, label: See how it scales in the Admin Layer, href: /work/zealix-admin }
 
   - id: testing
     nav: Validation
     label: 06 · Validation
     title: Tested with real staff, not assumptions.
-    lead: "Validated with staff from both groups, including people who had never used restaurant software before."
+    lead: "Validated in about 4 restaurants with more than 10 people, from owners to waiters and every role in between, including people who had never used restaurant software before."
     blocks:
       - type: rounds
         items:
@@ -110,7 +112,11 @@ sections:
     title: What shipped and what changed.
     lead: "The Operations Layer shipped on web, mobile and tablet: dish-linked inventory, fast mode, AI trend prediction, and a reporting module where owners see all sales and generate reports by custom or monthly periods."
     blocks:
-      - { type: media, label: "Final screens · web, tablet, mobile", height: lg }
+      - type: gallery
+        items:
+          - { label: "Final screens · web, tablet, mobile", src: ops-final-dark.webp, backdrop: true, srcLight: ops-final-light.webp, alt: "Sales on web, tablet and mobile: totals, orders, average ticket, sales over time and sales by register.", height: lg }
+          - { label: Dashboard, src: ops-dashboard-dark.webp, srcLight: ops-dashboard-light.webp, alt: "Restaurant dashboard: total sales, orders, average ticket, net profit, sales over time, payment methods and best selling dishes.", height: md }
+          - { label: Reports, src: ops-report-dark.webp, srcLight: ops-report-light.webp, alt: "Generate a sales report, step 1 of 3: pick a date range and choose PDF or CSV.", height: md }
 
   - id: learnings
     nav: Learnings

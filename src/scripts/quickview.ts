@@ -7,7 +7,7 @@ import { sheetDrag, reset } from './sheet';
 type Item = {
   title: string; line: string; body: string;
   facts: [string, string][]; link: string | null;
-  images: { src: string; alt: string }[]; tint: string;
+  images: { src: string; alt: string; srcLight?: string }[]; tint: string;
 };
 type Strings = Record<string, string>;
 
@@ -57,11 +57,14 @@ function setup(dlg: HTMLDialogElement) {
     media.className = `qv__media grad tint-${it.tint}`;
     track.innerHTML = imgs.map((img, n) => `
       <figure class="qv__slide" aria-roledescription="slide" aria-label="${t.image} ${n + 1} ${t.of} ${slides}">
-        ${img ? `<img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy" decoding="async">` : '<div class="mock qv__mock"></div>'}
+        ${img ? (img.srcLight
+          ? `<img class="qv__img--dark" src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy" decoding="async"><img class="qv__img--light" src="${esc(img.srcLight)}" alt="${esc(img.alt)}" loading="lazy" decoding="async">`
+          : `<img src="${esc(img.src)}" alt="${esc(img.alt)}" loading="lazy" decoding="async">`) : '<div class="mock qv__mock"></div>'}
       </figure>`).join('');
     dots.innerHTML = imgs.map((_, n) =>
       `<button type="button" class="qv__dot" aria-label="${t.goToImage} ${n + 1}" data-qv-dot="${n}"><span></span></button>`).join('');
     media.classList.toggle('is-single', slides < 2);
+    media.classList.toggle('has-images', it.images.length > 0);
     track.scrollLeft = 0;
     current = -1;
     setSlide(0);

@@ -48,7 +48,7 @@ const h = site.home;
       <ul class="other">
         {h.other.items.map((item, i) => (
           <li class="other__item qv-card" data-reveal>
-            <div class={`other__thumb grad tint-${item.tint}`} aria-hidden="true"><div class="mock"></div></div>
+            <div class={`other__thumb grad tint-${item.tint}`} aria-hidden="true"><div class:list={['mock', item.images[0] && 'mock--img']}>{item.images[0] && <img class:list={[item.images[0].srcLight && 'mock__img--dark']} src={item.images[0].src.replace('.webp', '-thumb.webp')} alt="" loading="lazy" decoding="async" width="1600" height="1000" />}{item.images[0]?.srcLight && <img class="mock__img--light" src={item.images[0].srcLight.replace('.webp', '-thumb.webp')} alt="" loading="lazy" decoding="async" width="1600" height="1000" />}</div></div>
             <div class="other__meta">
               <h3 class="t-body-lg t-medium">
                 <button class="qv-card__open" type="button" aria-haspopup="dialog" data-qv-open="qv-other" data-qv-index={i}>{item.title}</button>

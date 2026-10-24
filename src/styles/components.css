@@ -643,7 +643,7 @@
 .decisions { display: grid; gap: 32px; }
 .decision { display: grid; gap: 24px; padding-top: 32px; border-top: 1px solid var(--border-subtle); }
 .decision__text { display: grid; gap: 10px; max-width: 760px; }
-.decision__media { display: grid; gap: 16px; }
+.decision__media { display: grid; gap: 16px; align-items: start; }
 @media (min-width: 744px) { .decision__media { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 744px) { .decision__media--single { grid-template-columns: 1fr; } .grid-3--two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1200px) {
@@ -655,6 +655,7 @@
 .media--md { height: clamp(220px, 40vw, 420px); }
 .media--lg { height: clamp(300px, 50vw, 560px); }
 .decision .media { height: clamp(220px, 28vw, 340px); }
+.decision .media.media--img { height: auto; }
 
 .learnings { display: grid; }
 .learnings li { display: grid; grid-template-columns: 40px 1fr; gap: 24px; padding: 24px 0; border-top: 1px solid var(--border-subtle); }
@@ -927,3 +928,42 @@
   .qv__cta[hidden] + .qv__nav { margin-left: 0; }
   .qv .btn--icon { width: 48px; height: 48px; min-height: 48px; }
 }
+
+/* Real images in case study media: keep the 16:10 export, no cropping */
+.media--img { height: auto; }
+.media--img img { display: block; width: 100%; height: auto; }
+.media--img img.media__img--light { display: none; }
+:root[data-theme='light'] .media--img img.media__img--light { display: block; }
+:root[data-theme='light'] .media--img img.media__img--dark { display: none; }
+.built__thumb img { width: 100%; height: 100%; object-fit: cover; }
+/* Quick view with real images: show the whole export (no crop), no text over it */
+.qv__media.has-images { background: color-mix(in srgb, var(--text-primary) 5%, var(--bg-surface)); }
+.qv__media.has-images .qv__slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.qv__player { z-index: 2; }
+.qv__media.has-images .qv__img-label { display: none; }
+
+/* Device mockups with real screens */
+.mock--img { overflow: hidden; }
+.mock--img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+
+/* Gallery: first image full width, the rest in two columns (one on phones) */
+.gallery { display: grid; gap: 16px; }
+@media (min-width: 744px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .gallery > :first-child { grid-column: 1 / -1; }
+}
+/* Two images: side by side, no full-width lead */
+@media (min-width: 744px) { .gallery:has(> :nth-child(2):last-child) > :first-child { grid-column: auto; } }
+
+/* Mockups: light-theme screens */
+.mock--img img.mock__img--light { display: none; }
+:root[data-theme='light'] .mock--img img.mock__img--light { display: block; }
+:root[data-theme='light'] .mock--img img.mock__img--dark { display: none; }
+
+/* Multi-device shots on a transparent background: a soft fill so white screens don't melt into a white card */
+.media--backdrop { background: color-mix(in srgb, var(--text-primary) 5%, var(--bg-surface)); }
+
+/* Quick view: light-theme versions */
+.qv__slide img.qv__img--light { display: none; }
+:root[data-theme='light'] .qv__slide img.qv__img--light { display: block; }
+:root[data-theme='light'] .qv__slide img.qv__img--dark { display: none; }

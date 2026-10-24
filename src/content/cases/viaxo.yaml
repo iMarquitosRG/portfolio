@@ -18,6 +18,7 @@ tldr:
 next: zealix-operations
 nextSummary: Restaurant POS for frontline staff.
 seoDescription: How I designed a travel agency management app from scratch that cut payment and client admin time by about 40%.
+mockups: { screen: viaxo-mock-screen.webp, phone: viaxo-mock-phone.webp }
 
 sections:
   - id: overview
@@ -31,7 +32,7 @@ sections:
           - { value: "0 → 1", label: Designed from scratch }
           - { value: "~40%", label: Less time on payments and client admin }
           - { value: "1", label: App for the whole agency workflow }
-      - { type: media, label: App overview, height: md }
+      - { type: media, label: App overview, src: viaxo-clients.webp, alt: "Viaxo client management: a table of clients with email, phone and a status of up to date or with debt, plus search and filters.", height: md }
 
   - id: problem
     nav: Problem
@@ -68,15 +69,15 @@ sections:
           - eyebrow: Decision 01
             title: "Guided, multi-step flows"
             text: "I replaced single overloaded forms with guided, multi-step flows for itineraries and reservations, so agents always know the next step."
-            after: { label: Decision screen }
+            after: { label: Decision screen, src: viaxo-trip-step1.webp, alt: "Step 1 of 4 of the new trip flow: trip holder, origin, destination, dates, currency and notes, with a progress indicator." }
           - eyebrow: Decision 02
             title: "Client records that are quick to update"
             text: "I redesigned client management so records are easy to create and update, and rethought how the team organizes and splits its daily work."
-            after: { label: Decision screen }
+            after: { label: Decision screen, src: viaxo-client-record.webp, alt: "Client detail panel: contact info, trips in progress and pending payments, with a button to register a deposit." }
           - eyebrow: Decision 03
             title: "Built to work from anywhere"
             text: "I designed the whole app for web, mobile and tablet, so agents can handle urgent requests on the go, the biggest gap of the old tool."
-            after: { label: Decision screen }
+            after: { label: Decision screen, src: viaxo-anywhere.webp, backdrop: true, alt: "The client management screen on web, tablet and mobile." }
 
   - id: core-flows
     nav: Core flows
@@ -89,7 +90,11 @@ sections:
           - { eyebrow: Flow 01, title: "Client records", text: "Create and update a client in a few steps." }
           - { eyebrow: Flow 02, title: "Itineraries and reservations", text: "A guided flow instead of one long form." }
           - { eyebrow: Flow 03, title: "Payments and deposits", text: "Payments and deposits managed in one place." }
-      - { type: media, label: Core flows, height: md }
+      - type: gallery
+        items:
+          - { label: Trip summary, src: viaxo-trip-summary.webp, alt: "Last step of the new trip flow: a summary with route, holder, dates, payment deadline and the added services.", height: md }
+          - { label: Hotel service, src: viaxo-hotel.webp, alt: "Adding a hotel room to a trip: holder, occupancy, booking code, net price and public price.", height: md }
+          - { label: Register a deposit, src: viaxo-deposit.webp, alt: "Step 1 of 3 of registering a client deposit: trip, date and amount.", height: md }
       - { type: link, label: View all work, href: "/#work" }
 
   - id: testing
@@ -110,7 +115,7 @@ sections:
     title: What shipped and what changed.
     lead: "Payments, deposits and client admin became about 40% faster, on web, mobile and tablet."
     blocks:
-      - { type: media, label: "Final screens · web, tablet, mobile", height: lg }
+      - { type: media, label: "Final screens · web, tablet, mobile", src: viaxo-final.webp, backdrop: true, alt: "Trips on web, tablet and mobile, as cards with route, dates, payment deadline, total and status.", height: lg }
 
   - id: learnings
     nav: Learnings

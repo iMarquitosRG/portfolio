@@ -89,6 +89,8 @@ const { section: s } = Astro.props;
         );
       case 'media':
         return <Media {...b} />;
+      case 'gallery':
+        return <div class="gallery">{b.items.map((m) => <Media {...m} />)}</div>;
       case 'list':
         return (
           <ol class="learnings">

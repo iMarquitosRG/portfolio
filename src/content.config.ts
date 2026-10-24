@@ -6,9 +6,13 @@ const media = z.object({
   label: z.string(),
   /** File name inside src/assets/cases/ (optional until real screenshots exist). */
   src: z.string().optional(),
+  /** Optional light-theme version of the same image. */
+  srcLight: z.string().optional(),
   alt: z.string().optional(),
   height: z.enum(['sm', 'md', 'lg']).default('md'),
   tint: z.boolean().default(true),
+  /** Soft fill behind images with a transparent background (multi-device shots). */
+  backdrop: z.boolean().optional(),
 });
 
 const block = z.discriminatedUnion('type', [
@@ -28,6 +32,7 @@ const block = z.discriminatedUnion('type', [
   z.object({ type: z.literal('rounds'), items: z.array(z.object({ label: z.string(), text: z.string() })) }),
   z.object({ type: z.literal('quotes'), items: z.array(z.object({ quote: z.string(), role: z.string() })) }),
   z.object({ type: z.literal('media') }).merge(media),
+  z.object({ type: z.literal('gallery'), items: z.array(media) }),
   z.object({ type: z.literal('list'), items: z.array(z.string()) }),
   z.object({ type: z.literal('link'), label: z.string(), href: z.string() }),
 ]);
@@ -46,6 +51,8 @@ const cases = defineCollection({
     next: reference('cases'),
     nextSummary: z.string(),
     seoDescription: z.string(),
+    // Real screens for the device mockups (files in src/assets/cases). Placeholders when missing.
+    mockups: z.object({ screen: z.string(), phone: z.string(), screenLight: z.string().optional(), phoneLight: z.string().optional() }).optional(),
     sections: z.array(
       z.object({
         id: z.string(),

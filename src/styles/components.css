@@ -23,8 +23,10 @@
   border: 1px solid transparent;
   border-radius: var(--r-pill);
   font-weight: 500;
+  white-space: nowrap;
   transition: background-color var(--dur) ease, border-color var(--dur) ease, box-shadow var(--dur) ease;
 }
+.avatar { flex-shrink: 0; }
 .avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
 .topbar.is-scrolled .topbar__id {
   background-color: var(--glass-fill);
@@ -59,6 +61,9 @@
 @media (max-width: 743px) {
   .topbar { top: calc(var(--inset) + 12px); left: calc(var(--inset) + 12px); right: calc(var(--inset) + 12px); }
   .topnav { display: none; }
+  /* No center pill on phones: name takes the free space, accessibility stays right */
+  .topbar { grid-template-columns: minmax(0, 1fr) auto; }
+  .topbar__a11y { grid-column: 2; }
 }
 
 /* Tooltips (mouse only) */
@@ -706,18 +711,20 @@
 .process .card { gap: 48px; }
 @media (min-width: 744px) { .process { grid-template-columns: 1fr 1fr; } }
 
-.code-snippet {
+.tokens {
+  display: grid;
+  gap: 16px;
   padding: 20px 24px;
   border: 1px solid var(--border-subtle);
   border-radius: var(--r-card);
   background: var(--bg-base);
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  line-height: 1.7;
-  color: var(--text-secondary);
-  overflow-x: auto;
 }
-.code-snippet .c { color: var(--text-tertiary); }
+.tokens__cap { display: grid; gap: 4px; font-size: var(--fs-small); }
+.tokens__table { width: 100%; border-collapse: collapse; font-size: var(--fs-small); }
+.tokens__table th { text-align: left; font-weight: 400; padding: 0 12px 8px 0; }
+.tokens__table td { padding: 10px 12px 10px 0; border-top: 1px solid var(--border-subtle); color: var(--text-primary); }
+.tokens__table td:last-child, .tokens__table th:last-child { padding-right: 0; }
+.tokens__table code { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--text-secondary); word-break: break-word; }
 
 .experience li { display: grid; gap: 8px; padding: 28px 0; border-top: 1px solid var(--border-subtle); }
 .experience__dates { order: -1; }
@@ -967,3 +974,16 @@
 .qv__slide img.qv__img--light { display: none; }
 :root[data-theme='light'] .qv__slide img.qv__img--light { display: block; }
 :root[data-theme='light'] .qv__slide img.qv__img--dark { display: none; }
+
+/* Other work thumbs with a real screenshot: 16:10, centered in the 4:3 card (65% tall → 17.5% top and bottom) */
+.other__thumb .mock.mock--img { left: 11%; width: 78%; top: 17.5%; aspect-ratio: 16 / 10; }
+.other__thumb .mock--img img { object-position: top center; }
+
+/* Accessibility panel: never stretch rows or the segmented controls (Safari can give the sheet extra height) */
+.a11y { align-content: start; height: auto; }
+@media (max-width: 743px) { .a11y { overflow-y: auto; } }
+.a11y__group { min-inline-size: 0; margin: 0; padding: 0; border: 0; align-content: start; }
+.seg { align-items: stretch; align-self: start; }
+.seg__opt { display: grid; min-width: 0; }
+.seg__opt input { -webkit-appearance: none; appearance: none; width: 100%; height: 100%; }
+.seg__opt span { line-height: 1; }

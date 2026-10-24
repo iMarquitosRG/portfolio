@@ -20,11 +20,11 @@ const phoneL = await load(images?.phoneLight);
 ---
 <div class:list={['mockups', cls]} aria-hidden="true" data-parallax={parallax}>
   <div class:list={['mock mock--tablet', screen && 'mock--img']}>
-    {screen && <Image class:list={[screenL && 'mock__img--dark']} src={screen} alt="" widths={[400, 800, 1200]} sizes="(min-width: 1200px) 520px, 70vw" />}
-    {screenL && <Image class="mock__img--light" src={screenL} alt="" widths={[400, 800, 1200]} sizes="(min-width: 1200px) 520px, 70vw" />}
+    {screen && <Image class:list={[screenL && 'mock__img--dark']} src={screen} alt="" quality={90} widths={[400, 800, 1200]} sizes="(min-width: 1200px) 520px, 70vw" />}
+    {screenL && <Image class="mock__img--light" src={screenL} alt="" quality={90} widths={[400, 800, 1200]} sizes="(min-width: 1200px) 520px, 70vw" />}
   </div>
   <div class:list={['mock mock--phone', phone && 'mock--img']}>
-    {phone && <Image class:list={[phoneL && 'mock__img--dark']} src={phone} alt="" widths={[160, 320]} sizes="160px" />}
-    {phoneL && <Image class="mock__img--light" src={phoneL} alt="" widths={[160, 320]} sizes="160px" />}
+    {phone && <Image class:list={[phoneL && 'mock__img--dark']} src={phone} alt="" quality={90} widths={[160, 320]} sizes="160px" />}
+    {phoneL && <Image class="mock__img--light" src={phoneL} alt="" quality={90} widths={[160, 320]} sizes="160px" />}
   </div>
 </div>

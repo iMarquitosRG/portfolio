@@ -53,7 +53,13 @@ const a = site.about;
             <li class="surface card" data-reveal><span class="t-body-lg t-medium">{c.title}</span><span class="t-small c-secondary">{c.text}</span></li>
           ))}
         </ul>
-        <pre class="code-snippet" data-reveal aria-label="CSS from this site"><code>{a.code.snippet.map((line, i) => i === 0 ? <span class="c">{line}{'\n'}</span> : <span>{line}{'\n'}</span>)}</code></pre>
+        <figure class="tokens" data-reveal>
+          <figcaption class="tokens__cap"><span class="t-medium">{a.code.tokens.title}</span><span class="c-secondary">{a.code.tokens.caption}</span></figcaption>
+          <table class="tokens__table">
+            <thead><tr>{a.code.tokens.head.map((h) => <th scope="col" class="t-label c-tertiary">{h}</th>)}</tr></thead>
+            <tbody>{a.code.tokens.rows.map(([f, c]) => <tr><td>{f}</td><td><code>{c}</code></td></tr>)}</tbody>
+          </table>
+        </figure>
       </div>
     </section>
 

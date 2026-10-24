@@ -134,12 +134,17 @@ export const site = {
         { title: 'Smoother handoff', text: 'Specs and tokens that map 1:1 to code, so less gets lost in translation.' },
         { title: 'Prototypes in code', text: 'When a static mockup is not enough, I build it. This site is one.' },
       ],
-      snippet: [
-        '/* the accessibility panel, as it ships */',
-        ':root[data-theme="dark"]      { --bg-base: #0A0A0B; }',
-        ':root[data-material="solid"]  { --blur: 0px; }',
-        ':root[data-text-size="xl"]    { font-size: 130%; }',
-      ],
+      tokens: {
+        title: 'Figma to code, 1:1',
+        caption: 'The variables I set up in Figma are the same names this site uses in CSS.',
+        head: ['Figma variable', 'CSS on this site'],
+        rows: [
+          ['color/bg/base', '--bg-base'],
+          ['color/text/primary', '--text-primary'],
+          ['radius/card', '--r-card'],
+          ['Theme · Light mode', '[data-theme="light"]'],
+        ],
+      },
     },
     experience: {
       label: 'Experience',

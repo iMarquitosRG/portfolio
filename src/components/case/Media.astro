@@ -12,8 +12,8 @@ const imgL = keyL && images[keyL] ? (await images[keyL]()).default : null;
 <figure class:list={['media', `media--${height}`, tint && !img && 'media--tint', img && 'media--img', img && backdrop && 'media--backdrop']} data-reveal>
   {img ? (
     <>
-      <Image class:list={[imgL && 'media__img--dark']} src={img} alt={alt} widths={[480, 800, 1200, 1600, 2400]} sizes="(min-width: 1200px) 1000px, 100vw" />
-      {imgL && <Image class="media__img--light" src={imgL} alt={alt} widths={[480, 800, 1200, 1600, 2400]} sizes="(min-width: 1200px) 1000px, 100vw" />}
+      <Image class:list={[imgL && 'media__img--dark']} src={img} alt={alt} widths={[480, 800, 1200, 1600, 2400]} quality={90} sizes="(min-width: 1200px) 1000px, 100vw" />
+      {imgL && <Image class="media__img--light" src={imgL} alt={alt} widths={[480, 800, 1200, 1600, 2400]} quality={90} sizes="(min-width: 1200px) 1000px, 100vw" />}
     </>
   ) : (
     <figcaption class="media__label t-label">Placeholder · {label}</figcaption>

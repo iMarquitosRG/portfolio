@@ -90,7 +90,7 @@ export const site = {
     about: {
       label: 'About',
       statement:
-        '2 years designing B2B products end to end, from research to QA. A technical background that makes handoff feel like collaboration.',
+        'Nearly 3 years designing B2B products end to end, from research to QA. A technical background that makes handoff feel like collaboration.',
       stats: [
         { value: '4', label: 'Products designed 0 → 1' },
         { value: '3', label: 'Platforms shipped' },
